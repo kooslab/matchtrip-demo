@@ -36,10 +36,11 @@
 
 <div class="container max-w-[1024px] space-y-12 py-12">
 	<div class="space-y-3">
-		<h1 class="text-3xl font-bold tracking-tighter md:text-4xl">Lorem ipsum dolor sit amet</h1>
+		<h1 class="text-3xl font-bold tracking-tighter md:text-4xl">
+			Start your software project with confidence.
+		</h1>
 		<p class="text-lg text-muted-foreground md:w-[50%]">
-			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-			pariatur.
+			We create detailed requirements documents and wireframes that set SMBs up for success.
 		</p>
 		<div class="flex space-x-3 pt-1">
 			<form
