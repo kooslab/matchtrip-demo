@@ -61,5 +61,8 @@
 		"mode-watcher": "^0.4.1",
 		"svelte-fa": "^4.0.3",
 		"svelte-sonner": "^0.3.28"
+	},
+	"engines": {
+		"node": "18.x"
 	}
 }
