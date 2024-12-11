@@ -8,28 +8,18 @@
 
 	const features = [
 		{
-			title: 'Lorem Ipsum',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+			title: 'Requirements Specification',
+			description:
+				'Create a requirements specification to clearly define the project goals and requirements.'
 		},
 		{
-			title: 'Vestibulum Accumsan',
-			description: 'Vestibulum accumsan velit ut turpis scelerisque, sit amet cursus nisl gravida.'
+			title: 'Wireframe Creation',
+			description: 'Develop wireframes to visually represent the UI and functionality.'
 		},
 		{
-			title: 'Aenean Consectetur',
-			description: 'Aenean consectetur lacus eu nulla auctor, a tincidunt nisi egestas.'
-		},
-		{
-			title: 'Nullam Tristique',
-			description: 'Nullam tristique tortor a risus volutpat, ac hendrerit lorem finibus.'
-		},
-		{
-			title: 'Pellentesque Habitasse',
-			description: 'Pellentesque habitasse platea dictumst. Etiam nec tempor orci.'
-		},
-		{
-			title: 'Curabitur Volutpat',
-			description: 'Curabitur volutpat metus eget eros convallis, nec fermentum justo luctus.'
+			title: 'Prioritize Necessary Features',
+			description:
+				'Organize necessary features by priority to clearly define the development needs of the project.'
 		}
 	];
 </script>
@@ -42,7 +32,8 @@
 		<p class="text-lg text-muted-foreground md:w-[50%]">
 			We create detailed requirements documents and wireframes that set SMBs up for success.
 		</p>
-		<div class="flex space-x-3 pt-1">
+		<!-- comment out for now, and work on this newsletter if neceesary -->
+		<!-- <div class="flex space-x-3 pt-1">
 			<form
 				class="flex w-full items-center rounded-full border border-foreground/10 bg-gradient-to-t from-muted to-muted/60 p-1 pl-4 shadow-sm md:max-w-sm"
 			>
@@ -62,10 +53,10 @@
 					<ArrowRightIcon size={18} class="ml-2" />
 				</Button>
 			</form>
-		</div>
+		</div> -->
 	</div>
 	<div class="space-y-6">
-		<h2 class="text-2xl font-semibold tracking-tighter md:text-3xl">Album</h2>
+		<h2 class="text-2xl font-semibold tracking-tighter md:text-3xl">Services</h2>
 		<div class="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 			{#each features as feature}
 				<Card.Root class="bg-gradient-to-t from-muted to-muted/60">

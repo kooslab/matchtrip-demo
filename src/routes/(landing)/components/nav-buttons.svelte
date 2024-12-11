@@ -13,7 +13,7 @@
 <div class="hidden h-9 w-full justify-between md:flex">
 	<div>
 		<Button size="sm" variant="ghost" class="rounded-full text-foreground/60" href="/product">
-			Product
+			Services
 		</Button>
 		<Button size="sm" variant="ghost" class="rounded-full text-foreground/60" href="/pricing"
 			>Pricing</Button
@@ -22,7 +22,7 @@
 			>Blog</Button
 		>
 	</div>
-	<div class="flex items-center">
+	<!-- <div class="flex items-center">
 		{#if session}
 			<Dropdown.Root>
 				<Dropdown.Trigger class={buttonVariants({ variant: 'ghost', size: 'sm' })}>
@@ -44,5 +44,5 @@
 				<Button size="sm" href="/signup">Sign up</Button>
 			</div>
 		{/if}
-	</div>
+	</div> -->
 </div>
