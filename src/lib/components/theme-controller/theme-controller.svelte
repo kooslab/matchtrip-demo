@@ -7,6 +7,15 @@
 
 	let activeTheme = $derived($userPrefersMode ?? $mode ?? 'light');
 
+	// Reactive statement to update the body class
+	$effect(() => {
+		if (activeTheme === 'dark') {
+			document.body.classList.add('dark');
+		} else {
+			document.body.classList.remove('dark');
+		}
+	});
+
 	function handleThemeClick(target: 'dark' | 'light' | 'system') {
 		setMode(target);
 	}

@@ -13,7 +13,11 @@
 
 <div class="min-h-dvh">
 	<Navbar />
-	{@render children?.()}
+	<div class="container mx-auto max-w-[1024px] p-4">
+		<div class="prose dark:prose-dark">
+			{@render children?.()}
+		</div>
+	</div>
 </div>
 
 <Footer />

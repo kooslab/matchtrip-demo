@@ -4,7 +4,7 @@ import tailwindcssAnimate from 'tailwindcss-animate';
 
 const config: Config = {
 	darkMode: ['class'],
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts,md}'],
 	safelist: ['dark'],
 	theme: {
 		container: {
@@ -87,10 +87,23 @@ const config: Config = {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'caret-blink': 'caret-blink 1.25s ease-out infinite'
-			}
+			},
+			typography: (theme) => ({
+				dark: {
+					css: {
+						color: theme('colors.gray.300'),
+						h1: { color: theme('colors.gray.100') },
+						h2: { color: theme('colors.gray.100') },
+						h3: { color: theme('colors.gray.100') },
+						a: { color: theme('colors.blue.400') },
+						p: { color: theme('colors.gray.300') }
+						// Add more styles as needed
+					}
+				}
+			})
 		}
 	},
-	plugins: [tailwindcssAnimate]
+	plugins: [tailwindcssAnimate, require('@tailwindcss/typography')]
 };
 
 export default config;
