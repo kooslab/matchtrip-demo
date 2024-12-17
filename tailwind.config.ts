@@ -96,7 +96,16 @@ const config: Config = {
 						h2: { color: theme('colors.gray.100') },
 						h3: { color: theme('colors.gray.100') },
 						a: { color: theme('colors.blue.400') },
-						p: { color: theme('colors.gray.300') }
+						p: { color: theme('colors.gray.300') },
+						ul: { color: theme('colors.gray.300') },
+						ol: { color: theme('colors.gray.300') },
+						li: { color: theme('colors.gray.300') },
+						blockquote: { color: theme('colors.gray.300') },
+						strong: { color: theme('colors.gray.300') },
+						em: { color: theme('colors.gray.300') },
+						small: { color: theme('colors.gray.300') },
+						code: { color: theme('colors.gray.300') },
+						pre: { color: theme('colors.gray.300') }
 						// Add more styles as needed
 					}
 				}
