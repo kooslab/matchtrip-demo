@@ -88,28 +88,98 @@ const config: Config = {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'caret-blink': 'caret-blink 1.25s ease-out infinite'
 			},
-			typography: (theme) => ({
-				dark: {
+			typography: {
+				DEFAULT: {
 					css: {
-						color: theme('colors.gray.300'),
-						h1: { color: theme('colors.gray.100') },
-						h2: { color: theme('colors.gray.100') },
-						h3: { color: theme('colors.gray.100') },
-						a: { color: theme('colors.blue.400') },
-						p: { color: theme('colors.gray.300') },
-						ul: { color: theme('colors.gray.300') },
-						ol: { color: theme('colors.gray.300') },
-						li: { color: theme('colors.gray.300') },
-						blockquote: { color: theme('colors.gray.300') },
-						strong: { color: theme('colors.gray.300') },
-						em: { color: theme('colors.gray.300') },
-						small: { color: theme('colors.gray.300') },
-						code: { color: theme('colors.gray.300') },
-						pre: { color: theme('colors.gray.300') }
-						// Add more styles as needed
+						maxWidth: '65ch',
+						color: 'hsl(var(--foreground))',
+						'[class~="lead"]': {
+							color: 'hsl(var(--foreground))'
+						},
+						a: {
+							color: 'hsl(var(--primary))',
+							textDecoration: 'underline',
+							fontWeight: '500'
+						},
+						strong: {
+							color: 'hsl(var(--foreground))',
+							fontWeight: '600'
+						},
+						h1: {
+							color: 'hsl(var(--foreground))',
+							fontWeight: '600'
+						},
+						h2: {
+							color: 'hsl(var(--foreground))',
+							fontWeight: '600'
+						},
+						h3: {
+							color: 'hsl(var(--foreground))',
+							fontWeight: '600'
+						},
+						h4: {
+							color: 'hsl(var(--foreground))',
+							fontWeight: '600'
+						},
+						h5: {
+							color: 'hsl(var(--foreground))',
+							fontWeight: '600'
+						},
+						h6: {
+							color: 'hsl(var(--foreground))',
+							fontWeight: '600'
+						},
+						p: {
+							color: 'hsl(var(--foreground))'
+						},
+						li: {
+							color: 'hsl(var(--foreground))'
+						},
+						blockquote: {
+							color: 'hsl(var(--foreground))'
+						},
+						code: {
+							color: 'hsl(var(--foreground))'
+						},
+						th: {
+							color: 'hsl(var(--foreground))'
+						},
+						td: {
+							color: 'hsl(var(--foreground))'
+						},
+						thead: {
+							color: 'hsl(var(--foreground))'
+						},
+						tbody: {
+							color: 'hsl(var(--foreground))'
+						},
+						tfoot: {
+							color: 'hsl(var(--foreground))'
+						},
+						hr: {
+							borderColor: 'hsl(var(--border))',
+							opacity: 0.3
+						},
+						'ol > li::marker': {
+							color: 'hsl(var(--foreground))'
+						},
+						'ul > li::marker': {
+							color: 'hsl(var(--foreground))'
+						},
+						em: {
+							color: 'hsl(var(--foreground))'
+						},
+						figcaption: {
+							color: 'hsl(var(--muted-foreground))'
+						},
+						pre: {
+							color: 'hsl(var(--foreground))',
+							backgroundColor: 'hsl(var(--muted))'
+						}
+						// ... other default styles ...
 					}
 				}
-			})
+			}
 		}
 	},
 	plugins: [tailwindcssAnimate, require('@tailwindcss/typography')]
