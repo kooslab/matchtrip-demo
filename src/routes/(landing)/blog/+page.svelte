@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let data: { posts: Array<{ slug: string; title: string; description: string }> };
+	export let data: { posts: Array<{ title: string; description: string; slug: string }> };
 </script>
 
 <div class="blog-list">
