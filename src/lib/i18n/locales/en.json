@@ -1,0 +1,123 @@
+{
+	"hero": {
+		"title": "Transform Your Vision into Clear Software Requirements",
+		"description": "We help non-technical founders and business leaders create professional software requirements that developers actually understand."
+	},
+	"challenge": {
+		"title": "The Challenge You're Facing",
+		"intro": "You have a clear business vision and budget for your software project. But there's a catch:",
+		"points": {
+			"1": "Multiple development agencies are giving you different quotes",
+			"2": "You're not sure if their proposals align with your actual needs",
+			"3": "There's no technical expert on your team to validate their approach",
+			"4": "Each agency meeting feels like starting from scratch"
+		}
+	},
+	"solution": {
+		"title": "Our Solution: Your SW Requirements Expert, Right By Your Side",
+		"description": "In just one week, we'll transform your business vision into a clear, comprehensive software requirements document that both you and developers can understand."
+	},
+	"expertise": {
+		"title": "Our Expertise",
+		"features": {
+			"requirements": {
+				"title": "Requirements Engineering",
+				"description": "Comprehensive requirements gathering, analysis, and documentation. We transform business needs into clear, actionable technical specifications."
+			},
+			"process": {
+				"title": "Process Optimization",
+				"description": "Streamline your software development lifecycle with our requirements management expertise and industry best practices."
+			},
+			"consulting": {
+				"title": "Requirements Consulting",
+				"description": "Expert guidance in Agile methodologies, user story creation, and backlog management for optimal project outcomes."
+			}
+		}
+	},
+	"services": {
+		"title": "Comprehensive Services",
+		"documentation": {
+			"title": "Requirements Documentation",
+			"points": [
+				"Detailed functional & non-functional requirements",
+				"User story mapping and refinement",
+				"Technical specification documents",
+				"System architecture documentation"
+			]
+		},
+		"management": {
+			"title": "Requirements Management",
+			"points": [
+				"Backlog organization and prioritization",
+				"Requirements traceability matrices",
+				"Change management processes",
+				"Stakeholder communication plans"
+			]
+		}
+	},
+	"pricing": {
+		"title": "Pricing",
+		"plans": {
+			"starter": {
+				"name": "Starter",
+				"price": "$100",
+				"duration": "45 minutes remote video call",
+				"features": [
+					"SW development process overview",
+					"User Story based SW requirement template",
+					"Outsourcing 101 guide",
+					"Checklist for SW requirements"
+				]
+			},
+			"basic": {
+				"name": "Basic",
+				"price": "$1,000",
+				"duration": "1 week",
+				"features": [
+					"Everything in Problem Define Session",
+					"1 day on/offline user story workshop",
+					"User Story based SW requirement including 2 revision rounds",
+					"System Architecture draft",
+					"Development Cost Estimation",
+					"Agency evaluation criteria"
+				]
+			},
+			"professional": {
+				"name": "Professional",
+				"price": "$5,000",
+				"duration": "6 weeks",
+				"features": [
+					"Everything in Basic Service",
+					"SW Requirement Management during development",
+					"UI wireframe",
+					"System Architecture",
+					"DevOps Consulting",
+					"Development Cost Estimation",
+					"Development agency evaluation in partnership"
+				]
+			}
+		},
+		"cta": "Schedule a Call"
+	},
+	"testimonials": {
+		"title": "Customer Reviews",
+		"reviews": {
+			"1": {
+				"quote": "The requirements document we got was worth every penny. We saved weeks of back-and-forth with developers and probably thousands in development costs.",
+				"author": "Sarah Chen",
+				"role": "COO, TechStart Solutions",
+				"company": "Series A Startup"
+			},
+			"2": {
+				"quote": "Finally, someone who could speak both business and tech! They helped us avoid costly misunderstandings before they happened.",
+				"author": "Michael Rodriguez",
+				"role": "Operations Director",
+				"company": "Healthcare Innovation Inc."
+			}
+		}
+	},
+	"buttons": {
+		"scheduleConsultation": "Schedule Consultation",
+		"viewServices": "View Services"
+	}
+}

@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { locale, waitLocale } from 'svelte-i18n';
+	import '$lib/i18n';
+
 	import '../app.pcss';
 	import type { LayoutData } from './$types';
 
@@ -18,6 +22,12 @@
 	let { data, children }: Props = $props();
 	let { session, supabase } = $derived(data);
 
+	$effect(() => {
+		if (browser) {
+			locale.set($page.url.searchParams.get('lang') || window.navigator.language);
+		}
+	});
+
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
 			if (newSession?.expires_at !== session?.expires_at) {
@@ -34,5 +44,8 @@
 <ModeWatcher defaultMode="system" />
 <Toaster position="top-center" />
 <MetaTags {...metaTags} />
-
-{@render children()}
+{#await waitLocale()}
+	<div>Loading...</div>
+{:then}
+	{@render children()}
+{/await}
