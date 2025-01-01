@@ -79,6 +79,30 @@
 				'2 revision rounds',
 				'Agency evaluation criteria'
 			]
+		},
+		{
+			name: 'Requirements Sprint',
+			price: '1,000',
+			duration: '1 week',
+			deliverables: [
+				'Comprehensive requirements document',
+				'Technical specification outline',
+				'Development cost estimation guide',
+				'2 revision rounds',
+				'Agency evaluation criteria'
+			]
+		},
+		{
+			name: 'Requirements Sprint',
+			price: '1,000',
+			duration: '1 week',
+			deliverables: [
+				'Comprehensive requirements document',
+				'Technical specification outline',
+				'Development cost estimation guide',
+				'2 revision rounds',
+				'Agency evaluation criteria'
+			]
 		}
 	];
 </script>
@@ -186,27 +210,29 @@
 
 	<div class="space-y-8">
 		<h2 class="text-3xl font-semibold">Simple, Transparent Pricing</h2>
-		{#each pricingPlans as plan}
-			<Card.Root class="mx-auto max-w-md">
-				<Card.Header>
-					<Card.Title class="text-2xl">{plan.name}</Card.Title>
-					<div class="text-4xl font-bold">${plan.price}</div>
-					<p class="text-muted-foreground">Completed in {plan.duration}</p>
-				</Card.Header>
-				<Card.Content>
-					<ul class="space-y-2">
-						{#each plan.deliverables as item}
-							<li class="flex items-center gap-2">
-								<div class="h-1.5 w-1.5 rounded-full bg-primary" />
-								<span>{item}</span>
-							</li>
-						{/each}
-					</ul>
-				</Card.Content>
-				<Card.Footer>
-					<Button class="w-full rounded-full">Schedule a Call</Button>
-				</Card.Footer>
-			</Card.Root>
-		{/each}
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+			{#each pricingPlans as plan}
+				<Card.Root class="max-w-md">
+					<Card.Header>
+						<Card.Title class="text-2xl">{plan.name}</Card.Title>
+						<div class="text-4xl font-bold">${plan.price}</div>
+						<p class="text-muted-foreground">Completed in {plan.duration}</p>
+					</Card.Header>
+					<Card.Content>
+						<ul class="space-y-2">
+							{#each plan.deliverables as item}
+								<li class="flex items-center gap-2">
+									<div class="h-1.5 w-1.5 rounded-full bg-primary" />
+									<span>{item}</span>
+								</li>
+							{/each}
+						</ul>
+					</Card.Content>
+					<Card.Footer>
+						<Button class="w-full rounded-full">Schedule a Call</Button>
+					</Card.Footer>
+				</Card.Root>
+			{/each}
+		</div>
 	</div>
 </div>
