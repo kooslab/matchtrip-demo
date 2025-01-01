@@ -1,76 +1,112 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-
 	import ArrowRightIcon from 'lucide-svelte/icons/arrow-right';
+	import DocumentIcon from 'lucide-svelte/icons/file-text';
+	import ProcessIcon from 'lucide-svelte/icons/git-branch';
+	import TeamIcon from 'lucide-svelte/icons/users';
 
 	import { Button } from '@/components/ui/button';
 	import * as Card from '@/components/ui/card';
 
 	const features = [
 		{
-			title: 'Requirements Specification',
+			icon: DocumentIcon,
+			title: 'Requirements Engineering',
 			description:
-				'Create a requirements specification to clearly define the project goals and requirements.'
+				'Comprehensive requirements gathering, analysis, and documentation. We transform business needs into clear, actionable technical specifications.'
 		},
 		{
-			title: 'Wireframe Creation',
-			description: 'Develop wireframes to visually represent the UI and functionality.'
+			icon: ProcessIcon,
+			title: 'Process Optimization',
+			description:
+				'Streamline your software development lifecycle with our requirements management expertise and industry best practices.'
 		},
 		{
-			title: 'Prioritize Necessary Features',
+			icon: TeamIcon,
+			title: 'Requirements Consulting',
 			description:
-				'Organize necessary features by priority to clearly define the development needs of the project.'
+				'Expert guidance in Agile methodologies, user story creation, and backlog management for optimal project outcomes.'
+		}
+	];
+
+	const services = [
+		{
+			title: 'Requirements Documentation',
+			points: [
+				'Detailed functional & non-functional requirements',
+				'User story mapping and refinement',
+				'Technical specification documents',
+				'System architecture documentation'
+			]
+		},
+		{
+			title: 'Requirements Management',
+			points: [
+				'Backlog organization and prioritization',
+				'Requirements traceability matrices',
+				'Change management processes',
+				'Stakeholder communication plans'
+			]
 		}
 	];
 </script>
 
-<div class="container max-w-[1024px] space-y-12 py-12">
-	<div class="space-y-3">
-		<h1 class="text-3xl font-bold tracking-tighter text-foreground md:text-4xl">
-			Start your software project with confidence.
-		</h1>
-		<p class="text-lg text-muted-foreground md:w-[50%]">
-			We create detailed requirements documents and wireframes that set SMBs up for success.
-		</p>
-		<!-- comment out for now, and work on this newsletter if neceesary -->
-		<!-- <div class="flex space-x-3 pt-1">
-			<form
-				class="flex w-full items-center rounded-full border border-foreground/10 bg-gradient-to-t from-muted to-muted/60 p-1 pl-4 shadow-sm md:max-w-sm"
-			>
-				<input
-					name="email"
-					type="email"
-					placeholder="Email address"
-					class="w-full bg-transparent placeholder-muted-foreground outline-none"
-				/>
-				<Button
-					variant="none"
-					size="sm"
-					class="h-8 rounded-full border border-foreground/10 bg-gradient-to-t from-primary to-primary/70 text-primary-foreground shadow-md transition-all duration-200 hover:bg-primary/90 dark:bg-gradient-to-b"
-					type="submit"
-				>
-					<span>Get notified</span>
-					<ArrowRightIcon size={18} class="ml-2" />
-				</Button>
-			</form>
-		</div> -->
-	</div>
+<div class="container space-y-16 py-12">
 	<div class="space-y-6">
-		<h2 class="text-2xl font-semibold tracking-tighter text-foreground md:text-3xl">Services</h2>
-		<div class="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+		<h1 class="text-4xl font-bold tracking-tighter text-foreground md:text-5xl lg:text-6xl">
+			Transform Your Software Requirements into Success
+		</h1>
+		<p class="text-xl text-muted-foreground md:w-[70%]">
+			Expert software requirements consulting and documentation services that bridge the gap between
+			business vision and technical execution.
+		</p>
+		<div class="flex flex-col gap-4 pt-4 sm:flex-row">
+			<Button size="lg" class="rounded-full">
+				Schedule Consultation
+				<ArrowRightIcon size={18} class="ml-2" />
+			</Button>
+			<Button size="lg" variant="outline" class="rounded-full">View Services</Button>
+		</div>
+	</div>
+
+	<div class="space-y-8">
+		<h2 class="text-3xl font-semibold tracking-tighter text-foreground">Our Expertise</h2>
+		<div class="grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each features as feature}
 				<Card.Root class="bg-gradient-to-t from-muted to-muted/60">
 					<Card.Header>
-						<Card.Title class="text-foreground">
+						<div class="mb-4 inline-block rounded-full bg-primary/10 p-3 text-primary">
+							<svelte:component this={feature.icon} size={24} />
+						</div>
+						<Card.Title class="text-xl text-foreground">
 							{feature.title}
 						</Card.Title>
 					</Card.Header>
 					<Card.Content>
-						<div class="text-sm text-muted-foreground">
+						<p class="text-muted-foreground">
 							{feature.description}
-						</div>
+						</p>
 					</Card.Content>
 				</Card.Root>
+			{/each}
+		</div>
+	</div>
+
+	<div class="space-y-8">
+		<h2 class="text-3xl font-semibold tracking-tighter text-foreground">Comprehensive Services</h2>
+		<div class="grid gap-8 md:grid-cols-2">
+			{#each services as service}
+				<div class="space-y-4">
+					<h3 class="text-xl font-semibold">{service.title}</h3>
+					<ul class="space-y-2">
+						{#each service.points as point}
+							<li class="flex items-center gap-2">
+								<div class="h-1.5 w-1.5 rounded-full bg-primary" />
+								<span class="text-muted-foreground">{point}</span>
+							</li>
+						{/each}
+					</ul>
+				</div>
 			{/each}
 		</div>
 	</div>

@@ -11,12 +11,10 @@
 	let { children }: Props = $props();
 </script>
 
-<div class="min-h-dvh">
+<div class="mx-auto min-h-dvh w-full max-w-7xl px-4 sm:px-8 md:px-12">
 	<Navbar />
-	<div class="container mx-auto max-w-[1024px] p-4">
-		<div class="prose dark:prose-dark">
-			{@render children?.()}
-		</div>
+	<div class="dark:prose-dark prose">
+		{@render children?.()}
 	</div>
 </div>
 
