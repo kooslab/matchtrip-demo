@@ -4,6 +4,7 @@
 	import DocumentIcon from 'lucide-svelte/icons/file-text';
 	import ProcessIcon from 'lucide-svelte/icons/git-branch';
 	import TeamIcon from 'lucide-svelte/icons/users';
+	import { CheckCircle } from 'lucide-svelte';
 
 	import { Button } from '@/components/ui/button';
 	import * as Card from '@/components/ui/card';
@@ -69,89 +70,114 @@
 
 	const pricingPlans = [
 		{
-			name: 'Requirements Sprint',
-			price: '1,000',
-			duration: '1 week',
+			name: 'Starter',
+			price: '100',
+			duration: '45 minutes remote video call',
 			deliverables: [
-				'Comprehensive requirements document',
-				'Technical specification outline',
-				'Development cost estimation guide',
-				'2 revision rounds',
-				'Agency evaluation criteria'
-			]
+				'SW development process overview',
+				'User Story based SW requirement template',
+				'Outsourcing 101 guide',
+				'Checklist for SW requirements'
+			],
+			extra: 'Will be deducted when choosing Requirements Sprint'
 		},
 		{
-			name: 'Requirements Sprint',
+			name: 'Basic',
 			price: '1,000',
 			duration: '1 week',
 			deliverables: [
-				'Comprehensive requirements document',
-				'Technical specification outline',
-				'Development cost estimation guide',
-				'2 revision rounds',
+				'Everything in Problem Define Session',
+				'1 day on/offline user story workshop',
+				'User Story based SW requirement including 2 revision rounds',
+				'System Architecture draft',
+				'Development Cost Estimation',
 				'Agency evaluation criteria'
-			]
+			],
+			extra: 'Will be deducted when choosing Professional Service'
 		},
 		{
-			name: 'Requirements Sprint',
-			price: '1,000',
-			duration: '1 week',
+			name: 'Professional',
+			price: '4,000',
+			duration: '6 weeks',
 			deliverables: [
-				'Comprehensive requirements document',
-				'Technical specification outline',
-				'Development cost estimation guide',
-				'2 revision rounds',
-				'Agency evaluation criteria'
-			]
+				'Everything in Basic Service',
+				'SW Requirement Management during development',
+				'UI wireframe',
+				'System Architecture',
+				'DevOps Consulting',
+				'Development Cost Estimation',
+				'Development agency evaluation in partnership'
+			],
+			extra: 'Duration and price is subject to change based on the project size'
 		}
 	];
 </script>
 
-<div class="container space-y-16 py-12">
-	<div class="space-y-6">
+<div class="container mx-auto px-4 py-8">
+	<div class="space-y-6 text-center">
 		<h1 class="text-4xl font-bold tracking-tighter text-foreground md:text-5xl lg:text-6xl">
 			Bridge the Gap Between Your Vision and Technical Reality
 		</h1>
-		<p class="text-xl text-muted-foreground md:w-[80%]">
+		<p class="mx-auto text-xl text-muted-foreground md:w-[80%]">
 			Ready to build your software but struggling to communicate with development teams? We help
 			non-technical leaders get their projects right from the start.
 		</p>
-		<div class="flex flex-col gap-4 pt-4 sm:flex-row">
-			<Button size="lg" class="rounded-full">
+		<div class="flex flex-col justify-center gap-4 pt-4 sm:flex-row">
+			<Button size="lg" class="hover:bg-primary-dark rounded-full bg-primary">
 				Schedule Consultation
 				<ArrowRightIcon size={18} class="ml-2" />
 			</Button>
-			<Button size="lg" variant="outline" class="rounded-full">View Services</Button>
+			<Button
+				size="lg"
+				variant="outline"
+				class="hover:bg-primary-light rounded-full border-primary text-primary"
+			>
+				View Services
+			</Button>
 		</div>
 	</div>
 
-	<div class="space-y-8 rounded-lg bg-muted/30 p-8">
-		<h2 class="text-3xl font-semibold">The Challenge You're Facing</h2>
-		<div class="space-y-4 text-lg text-muted-foreground">
-			<p>
+	<div class="mt-12 space-y-8 rounded-lg bg-muted/30 p-8 text-3xl">
+		<h2 class="text-center text-4xl font-semibold">The Challenge You're Facing</h2>
+		<div class="space-y-2 text-muted-foreground">
+			<p class="mb-4 sm:px-12">
 				You have a clear business vision and budget for your software project. But there's a catch:
 			</p>
-			<ul class="list-disc space-y-2 pl-6">
-				<li>Multiple development agencies are giving you different quotes</li>
-				<li>You're not sure if their proposals align with your actual needs</li>
-				<li>There's no technical expert on your team to validate their approach</li>
-				<li>Each agency meeting feels like starting from scratch</li>
+			<ul class="list-disc space-y-2 pl-4 sm:pl-12">
+				<li class="flex items-center">
+					<CheckCircle class="mr-2 text-primary" size={20} />
+					<span>Multiple development agencies are giving you different quotes</span>
+				</li>
+				<li class="flex items-center">
+					<CheckCircle class="mr-2 text-primary" size={20} />
+					<span>You're not sure if their proposals align with your actual needs</span>
+				</li>
+				<li class="flex items-center">
+					<CheckCircle class="mr-2 text-primary" size={20} />
+					<span>There's no technical expert on your team to validate their approach</span>
+				</li>
+				<li class="flex items-center">
+					<CheckCircle class="mr-2 text-primary" size={20} />
+					<span>Each agency meeting feels like starting from scratch</span>
+				</li>
 			</ul>
 		</div>
 	</div>
 
-	<div class="space-y-8">
-		<h2 class="text-3xl font-semibold">The Solution: Professional Requirements Engineering</h2>
-		<p class="text-xl text-muted-foreground">
+	<div class="mt-12 space-y-8">
+		<h2 class="text-center text-4xl font-semibold">
+			Our Solution: Your SW Requirements Expert, Right By Your Side
+		</h2>
+		<p class="text-center text-2xl text-muted-foreground">
 			In just one week, we'll transform your business vision into a clear, comprehensive software
 			requirements document that both you and developers can understand.
 		</p>
 
 		<div class="space-y-8">
-			<h2 class="text-3xl font-semibold">Our Expertise</h2>
+			<h2 class="text-center text-3xl font-semibold">Our Expertise</h2>
 			<div class="grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{#each features as feature}
-					<Card.Root class="bg-gradient-to-t from-muted to-muted/60">
+					<Card.Root class="bg-gradient-to-t from-muted to-muted/60 shadow-lg">
 						<Card.Header>
 							<div class="mb-4 inline-block rounded-full bg-primary/10 p-3 text-primary">
 								<svelte:component this={feature.icon} size={24} />
@@ -170,8 +196,8 @@
 			</div>
 		</div>
 
-		<div class="space-y-8">
-			<h2 class="text-3xl font-semibold">Comprehensive Services</h2>
+		<div class="mt-12 space-y-8">
+			<h2 class="text-center text-3xl font-semibold">Comprehensive Services</h2>
 			<div class="grid gap-8 md:grid-cols-2">
 				{#each services as service}
 					<div class="space-y-4">
@@ -190,11 +216,11 @@
 		</div>
 	</div>
 
-	<div class="space-y-8">
-		<h2 class="text-3xl font-semibold">Success Stories</h2>
+	<div class="mt-12 space-y-8">
+		<h2 class="text-center text-3xl font-semibold">Customer Reviews</h2>
 		<div class="grid gap-6 md:grid-cols-2">
 			{#each testimonials as testimonial}
-				<Card.Root class="bg-background">
+				<Card.Root class="bg-background shadow-md">
 					<Card.Content class="pt-6">
 						<p class="mb-4 text-lg italic text-muted-foreground">"{testimonial.quote}"</p>
 						<div class="space-y-1">
@@ -208,28 +234,36 @@
 		</div>
 	</div>
 
-	<div class="space-y-8">
-		<h2 class="text-3xl font-semibold">Simple, Transparent Pricing</h2>
+	<div class="mt-12 space-y-8">
+		<h2 class="text-center text-3xl font-semibold">Pricing</h2>
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
 			{#each pricingPlans as plan}
-				<Card.Root class="max-w-md">
+				<Card.Root class="max-w-md shadow-lg">
 					<Card.Header>
 						<Card.Title class="text-2xl">{plan.name}</Card.Title>
-						<div class="text-4xl font-bold">${plan.price}</div>
+						<div class="text-4xl font-bold">
+							{plan.price === 'Contact Us' ? plan.price : `$${plan.price}`}
+						</div>
 						<p class="text-muted-foreground">Completed in {plan.duration}</p>
 					</Card.Header>
 					<Card.Content>
 						<ul class="space-y-2">
 							{#each plan.deliverables as item}
 								<li class="flex items-center gap-2">
-									<div class="h-1.5 w-1.5 rounded-full bg-primary" />
+									<div class="h-1.5 w-1.5 rounded-full bg-primary"></div>
 									<span>{item}</span>
 								</li>
 							{/each}
+							{#if plan.extra}
+								<li class="flex items-center gap-2">
+									<div class="h-1.5 w-1.5 rounded-full bg-primary"></div>
+									<span>{plan.extra}</span>
+								</li>
+							{/if}
 						</ul>
 					</Card.Content>
 					<Card.Footer>
-						<Button class="w-full rounded-full">Schedule a Call</Button>
+						<Button class="w-full rounded-full bg-primary">Schedule a Call</Button>
 					</Card.Footer>
 				</Card.Root>
 			{/each}
