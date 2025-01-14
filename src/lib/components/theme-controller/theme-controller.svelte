@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { setMode, mode, userPrefersMode } from 'mode-watcher';
+	import { setMode } from 'mode-watcher';
 
 	import HardDrive from 'lucide-svelte/icons/hard-drive';
 	import MoonIcon from 'lucide-svelte/icons/moon';
 	import SunIcon from 'lucide-svelte/icons/sun';
 
-	let activeTheme = $derived($userPrefersMode ?? $mode ?? 'light');
+	let activeTheme = $state('light'); // Use $state to make activeTheme reactive
 
 	// Reactive statement to update the body class
 	$effect(() => {
@@ -18,6 +18,7 @@
 
 	function handleThemeClick(target: 'dark' | 'light' | 'system') {
 		setMode(target);
+		activeTheme = target; // Update activeTheme based on user selection
 	}
 </script>
 
