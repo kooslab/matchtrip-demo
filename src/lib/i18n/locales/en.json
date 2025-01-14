@@ -19,41 +19,43 @@
 	},
 	"expertise": {
 		"title": "Our Expertise",
-		"features": {
-			"requirements": {
+		"features": [
+			{
 				"title": "Requirements Engineering",
-				"description": "Comprehensive requirements gathering, analysis, and documentation. We transform business needs into clear, actionable technical specifications."
+				"description": "Comprehensive requirements gathering, analysis, and documentation."
 			},
-			"process": {
+			{
 				"title": "Process Optimization",
-				"description": "Streamline your software development lifecycle with our requirements management expertise and industry best practices."
+				"description": "Streamline your software development lifecycle."
 			},
-			"consulting": {
+			{
 				"title": "Requirements Consulting",
-				"description": "Expert guidance in Agile methodologies, user story creation, and backlog management for optimal project outcomes."
+				"description": "Expert guidance in Agile methodologies."
 			}
-		}
+		]
 	},
 	"services": {
 		"title": "Comprehensive Services",
-		"documentation": {
-			"title": "Requirements Documentation",
-			"points": [
-				"Detailed functional & non-functional requirements",
-				"User story mapping and refinement",
-				"Technical specification documents",
-				"System architecture documentation"
-			]
-		},
-		"management": {
-			"title": "Requirements Management",
-			"points": [
-				"Backlog organization and prioritization",
-				"Requirements traceability matrices",
-				"Change management processes",
-				"Stakeholder communication plans"
-			]
-		}
+		"features": [
+			{
+				"title": "Requirements Documentation",
+				"points": [
+					"Detailed functional & non-functional requirements",
+					"User story mapping and refinement",
+					"Technical specification documents",
+					"System architecture documentation"
+				]
+			},
+			{
+				"title": "Requirements Management",
+				"points": [
+					"Backlog organization and prioritization",
+					"Requirements traceability matrices",
+					"Change management processes",
+					"Stakeholder communication plans"
+				]
+			}
+		]
 	},
 	"pricing": {
 		"title": "Pricing",
