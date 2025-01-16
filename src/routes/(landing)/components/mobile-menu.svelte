@@ -38,13 +38,13 @@
 					{/if}
 				</div> -->
 				<div class="text-muted-foreground">
-					<Button class="w-full justify-between text-base" variant="ghost">
+					<!-- <Button class="w-full justify-between text-base" variant="ghost">
 						<span> Product </span>
 						<ChevronDownIcon class="h-[1.2rem] w-[1.2rem]" />
 					</Button>
 					<Button class="w-full justify-between text-base" variant="ghost">
 						<span> Pricing </span>
-					</Button>
+					</Button> -->
 					<Button class="w-full justify-between text-base" variant="ghost">
 						<span> Blog </span>
 					</Button>
