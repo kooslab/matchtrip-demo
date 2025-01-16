@@ -5,33 +5,33 @@
 		"description": "We help you save time and money, and increase the chances of project success."
 	},
 	"challenge": {
-		"title": "The Challenge You're Facing",
-		"intro": "You have a clear business vision and budget for your software project. But there's a catch:",
+		"title": "Software Development Projects Don't Start Without Preparation",
+		"intro": "You might have a clear vision in your mind, but are you facing difficulties at the start due to the following issues?",
 		"points": {
-			"1": "Multiple development agencies are giving you different quotes",
-			"2": "You're not sure if their proposals align with your actual needs",
-			"3": "There's no technical expert on your team to validate their approach",
-			"4": "Each agency meeting feels like starting from scratch"
+			"1": "Difficulty in selecting an outsourcing development agency",
+			"2": "Difficulty in assessing the rationality of outsourcing cost estimates",
+			"3": "Lack of a requirements document to solve the problem",
+			"4": "Difficulty in synchronizing business goals with the development agency"
 		}
 	},
 	"solution": {
-		"title": "Our Solution: Your SW Requirements Expert",
-		"description": "In just one week, we'll transform your business vision into a clear, comprehensive software requirements document."
+		"title": "Get Help from a Requirements Expert Who Understands Both Business and Technology",
+		"description": "Kooslab provides a clear software requirements document within two weeks to help you start your project quickly."
 	},
 	"expertise": {
 		"title": "Our Expertise",
 		"features": [
 			{
 				"title": "Requirements Engineering",
-				"description": "Comprehensive requirements gathering, analysis, and documentation."
+				"description": "Systematically analyze business goals and translate them into technical requirements, bridging the understanding between development and business teams."
 			},
 			{
 				"title": "Process Optimization",
-				"description": "Streamline your software development lifecycle."
+				"description": "Optimize the entire development lifecycle to eliminate unnecessary delays and increase project efficiency."
 			},
 			{
-				"title": "Requirements Consulting",
-				"description": "Expert guidance in Agile methodologies."
+				"title": "Development Consulting",
+				"description": "Provide expert guidance throughout the process, including outsourcing selection, cost optimization, and requirements change management."
 			}
 		]
 	},
@@ -41,23 +41,33 @@
 			{
 				"title": "Requirements Documentation",
 				"points": [
-					"Detailed functional & non-functional requirements",
-					"User story mapping and refinement",
-					"Technical specification documents",
-					"System architecture documentation"
+					"Write clear and actionable user stories",
+					"Systematize user-centric functional requirements",
+					"Provide documents that can be shared with development teams and stakeholders",
+					"Create designs that provide an overview of data flow and system structure"
 				]
 			},
 			{
 				"title": "Requirements Management",
 				"points": [
-					"Backlog organization and prioritization",
-					"Requirements traceability matrices",
-					"Change management processes",
-					"Stakeholder communication plans"
+					"Systematically manage priority setting and change requests",
+					"Track requirements linked to business goals",
+					"Manage and review changes in requirements during development",
+					"Support effective stakeholder communication"
+				]
+			},
+			{
+				"title": "Support for Selecting Development Agencies",
+				"points": [
+					"Establish evaluation criteria and support selection of outsourcing development agencies",
+					"Analyze and optimize the appropriateness of estimates",
+					"Review development schedules and risk factors",
+					"Protect intellectual property and review contracts"
 				]
 			}
 		]
 	},
+
 	"pricing": {
 		"title": "Pricing",
 		"plans": {
@@ -66,37 +76,33 @@
 				"price": "$100",
 				"duration": "45 minutes remote video call",
 				"features": [
-					"SW development process overview",
-					"User Story based SW requirement template",
-					"Outsourcing 101 guide",
-					"Checklist for SW requirements"
+					"Provide an overview of the development process",
+					"Provide and explain a user story requirements template",
+					"Outsourcing guide",
+					"Checklist for reviewing outsourcing development agency selection"
 				]
 			},
 			"basic": {
 				"name": "Basic",
 				"price": "$1,000",
-				"duration": "1 week",
+				"duration": "7 business days",
 				"features": [
-					"Everything in Problem Define Session",
-					"1 day on/offline user story workshop",
-					"User Story based SW requirement including 2 revision rounds",
-					"System Architecture draft",
-					"Development Cost Estimation",
-					"Agency evaluation criteria"
+					"Review client business and existing materials",
+					"Participate in a 1-day user story creation workshop",
+					"Create a user story-based requirements document",
+					"Add 1 day for an additional $500",
+					"Add development cost estimation for an additional $300"
 				]
 			},
 			"professional": {
-				"name": "Professional",
-				"price": "$5,000",
-				"duration": "6 weeks",
+				"name": "Consulting",
+				"price": "$4,000",
+				"duration": "Monthly",
 				"features": [
-					"Everything in Basic Service",
-					"SW Requirement Management during development",
+					"Use 40 hours per month flexibly according to the client's situation",
+					"Requirements management and change response",
 					"UI wireframe",
-					"System Architecture",
-					"DevOps Consulting",
-					"Development Cost Estimation",
-					"Development agency evaluation in partnership"
+					"Participate in development agency evaluation and selection"
 				]
 			}
 		},
@@ -106,16 +112,28 @@
 		"title": "Customer Reviews",
 		"reviews": {
 			"1": {
-				"quote": "The requirements document we got was worth every penny. We saved weeks of back-and-forth with developers and probably thousands in development costs.",
-				"author": "Sarah Chen",
-				"role": "COO, TechStart Solutions",
-				"company": "Series A Startup"
+				"quote": "In a situation where there was no one internally with a high understanding of development or developers, we were able to discover pages, features, and user stories that we hadn't thought of through the workshop.",
+				"author": "Jenny Wang",
+				"role": "Senior Researcher",
+				"company": "Safety On Solution"
 			},
 			"2": {
-				"quote": "Finally, someone who could speak both business and tech! They helped us avoid costly misunderstandings before they happened.",
-				"author": "Michael Rodriguez",
-				"role": "Operations Director",
-				"company": "Healthcare Innovation Inc."
+				"quote": "The process of prioritizing the vague yet enormous requirements/expectations we had for the new product development was particularly beneficial. Thanks to the clear requirements deliverables, we were able to focus on solving the essential problems.",
+				"author": "Nicholas Yang",
+				"role": "CEO",
+				"company": "BunnyRate"
+			},
+			"3": {
+				"quote": "It was helpful in managing the scope and cost of the project, and having an external expert facilitate discussions that were difficult to organize internally allowed us to quickly organize high-priority development requirements.",
+				"author": "Kim OOO",
+				"role": "COO",
+				"company": "Company L"
+			},
+			"4": {
+				"quote": "By conducting workshops with stakeholders, I realized the importance of visualizing and systematically organizing what was previously just vague thoughts about specific features.",
+				"author": "Lee Hyejeong",
+				"role": "Executive Director",
+				"company": "Safety On Solution"
 			}
 		}
 	},
