@@ -27,4 +27,5 @@
 	let { class: className = '', size = 'md' }: Props = $props();
 </script>
 
-<Logo class={cn(variants({ size }), className)} />
+<!-- <Logo class={cn(variants({ size }), className)} /> -->
+<img src="/favicon.png" alt="Kooslab" class="h-8 w-8" />
