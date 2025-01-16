@@ -24,12 +24,19 @@
 	console.log($_('expertise.features'));
 </script>
 
-<div class="container mx-auto px-4 py-8">
-	<div class="space-y-6 text-center">
-		<h1 class="text-4xl font-bold tracking-tighter text-foreground md:text-5xl lg:text-6xl">
-			{$_('hero.title')}
-		</h1>
-		<p class="mx-auto text-xl text-muted-foreground md:w-[80%]">
+<div class="container mx-auto px-2 py-8 sm:px-4">
+	<div class="text-center">
+		<div
+			class="mb-4 space-y-2 text-4xl font-bold tracking-tighter text-foreground sm:mb-12 md:text-5xl lg:text-6xl"
+		>
+			<h1>
+				{$_('hero.title_01')}
+			</h1>
+			<h1>
+				{$_('hero.title_02')}
+			</h1>
+		</div>
+		<p class="mx-auto mb-4 text-2xl text-muted-foreground sm:mb-8">
 			{$_('hero.description')}
 		</p>
 		<div class="flex flex-col justify-center gap-4 pt-4 sm:flex-row">
@@ -37,17 +44,19 @@
 				{$_('buttons.scheduleConsultation')}
 				<ArrowRightIcon size={18} class="ml-2" />
 			</Button>
-			<Button
-				variant="outline"
-				class="hover:bg-primary-light rounded-full border-primary text-primary"
+			<a
+				href="https://featpaper.com/l/wuT4zv29rKBK"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="hover:bg-primary-light inline-block rounded-full border-primary px-4 py-2 text-center text-primary"
 			>
 				{$_('buttons.viewServices')}
-			</Button>
+			</a>
 		</div>
 	</div>
 
-	<div class="mt-12 space-y-8 rounded-lg bg-muted/30 p-8 text-3xl">
-		<h2 class="text-center text-4xl font-semibold">{$_('challenge.title')}</h2>
+	<div class="mt-12 space-y-8 rounded-lg bg-muted/30 p-2 sm:p-8">
+		<h2 class="text-center text-3xl font-semibold">{$_('challenge.title')}</h2>
 		<div class="space-y-2 text-muted-foreground">
 			<p class="mb-4 sm:px-12">{$_('challenge.intro')}</p>
 			<ul class="list-disc space-y-2 pl-4 sm:pl-12">

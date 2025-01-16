@@ -1,7 +1,8 @@
 {
 	"hero": {
-		"title": "Start Your Software Project with Confidence",
-		"description": "At Kooslab, we specialize in building clear and detailed user stories that translate your business needs into actionable software requirements."
+		"title_01": "Start Your Software Project Immediately",
+		"title_02": "with actionable SW requirements",
+		"description": "We help you save time and money, and increase the chances of project success."
 	},
 	"challenge": {
 		"title": "The Challenge You're Facing",
