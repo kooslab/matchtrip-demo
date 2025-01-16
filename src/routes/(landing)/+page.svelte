@@ -71,45 +71,40 @@
 	</div>
 
 	<div class="mt-12 space-y-8">
-		<h2 class="text-center text-4xl font-semibold">
+		<h2 class="text-center text-3xl font-semibold">
 			{$_('solution.title')}
 		</h2>
-		<p class="text-center text-2xl text-muted-foreground">
+		<p class="text-center text-xl text-muted-foreground">
 			{$_('solution.description')}
 		</p>
-
-		<div class="space-y-8">
-			<h2 class="text-center text-3xl font-semibold">{$_('expertise.title')}</h2>
-			<div class="grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-				{#each $_('expertise.features') as feature: { title: string, description: string }, index}
-					<Card.Root class="bg-gradient-to-t from-muted to-muted/60 shadow-lg">
-						<Card.Header>
-							<div class="mb-4 inline-block rounded-full bg-primary/10 p-3 text-primary">
-								<svelte:component this={icons[index]} size={24} />
-							</div>
-							<Card.Title class="text-xl text-foreground">{feature.title}</Card.Title>
-						</Card.Header>
-						<Card.Content>
-							<p class="text-muted-foreground">{feature.description}</p>
-						</Card.Content>
-					</Card.Root>
-				{/each}
-			</div>
-		</div>
+		<img
+			src="/img/sample_requirement.png"
+			alt="requirement"
+			class="mx-auto max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[800px]"
+		/>
 
 		<div class="mt-12 space-y-8">
 			<h2 class="text-center text-3xl font-semibold">{$_('services.title')}</h2>
-			<div class="space-y-4">
-				{#each $_('services.features') as feature}
-					<h3 class="text-xl font-semibold">{feature.title}</h3>
-					<ul class="space-y-2">
-						{#each feature.points as point}
-							<li class="flex items-center gap-2">
-								<div class="h-1.5 w-1.5 rounded-full bg-primary" />
-								<span class="text-muted-foreground">{point}</span>
-							</li>
-						{/each}
-					</ul>
+			<div class="grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{#each $_('services.features') as feature: { title: string, description: string }, index}
+					<Card.Root class="bg-gradient-to-t from-muted to-muted/60 shadow-lg">
+						<Card.Header>
+							<div class="mb-4 inline-block flex rounded-full bg-primary/10 p-3 text-primary">
+								<svelte:component this={icons[index]} size={24} class="mr-2" />
+								<Card.Title class="text-xl text-foreground">{feature.title}</Card.Title>
+							</div>
+						</Card.Header>
+						<Card.Content>
+							<ul class="space-y-2">
+								{#each feature.points as point}
+									<li class="flex items-center gap-2">
+										<div class="h-1.5 w-1.5 rounded-full bg-primary" />
+										<span class="text-muted-foreground">{point}</span>
+									</li>
+								{/each}
+							</ul>
+						</Card.Content>
+					</Card.Root>
 				{/each}
 			</div>
 		</div>
@@ -117,8 +112,8 @@
 
 	<div class="mt-12 space-y-8">
 		<h2 class="text-center text-3xl font-semibold">{$_('testimonials.title')}</h2>
-		<div class="grid gap-6 md:grid-cols-2">
-			{#each [1, 2] as i}
+		<div class="grid gap-6 md:grid-cols-4">
+			{#each [1, 2, 3, 4] as i}
 				<Card.Root class="bg-background shadow-md">
 					<Card.Content class="pt-6">
 						<p class="mb-4 text-lg italic text-muted-foreground">
