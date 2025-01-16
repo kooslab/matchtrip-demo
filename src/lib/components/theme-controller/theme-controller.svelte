@@ -5,20 +5,17 @@
 	import MoonIcon from 'lucide-svelte/icons/moon';
 	import SunIcon from 'lucide-svelte/icons/sun';
 
-	let activeTheme = $state('light'); // Use $state to make activeTheme reactive
+	let activeTheme = 'light'; // Force theme to light
 
 	// Reactive statement to update the body class
 	$effect(() => {
-		if (activeTheme === 'dark') {
-			document.body.classList.add('dark');
-		} else {
-			document.body.classList.remove('dark');
-		}
+		document.body.classList.remove('dark');
+		document.body.classList.add('light');
 	});
 
 	function handleThemeClick(target: 'dark' | 'light' | 'system') {
-		setMode(target);
-		activeTheme = target; // Update activeTheme based on user selection
+		// Do nothing or log a message to indicate theme is forced
+		console.log('Theme is forced to light');
 	}
 </script>
 
