@@ -40,10 +40,12 @@
 			{$_('hero.description')}
 		</p>
 		<div class="flex flex-col justify-center gap-4 pt-4 sm:flex-row">
-			<Button size="lg" class="hover:bg-primary-dark rounded-full bg-primary">
-				{$_('buttons.scheduleConsultation')}
-				<ArrowRightIcon size={18} class="ml-2" />
-			</Button>
+			<a href="https://tally.so/r/waGeNy" target="_blank" rel="noopener noreferrer">
+				<Button size="lg" class="hover:bg-primary-dark rounded-full bg-primary">
+					{$_('buttons.scheduleConsultation')}
+					<ArrowRightIcon size={18} class="ml-2" />
+				</Button>
+			</a>
 			<a
 				href="https://featpaper.com/l/wuT4zv29rKBK"
 				target="_blank"
