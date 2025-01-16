@@ -72,7 +72,7 @@
 		</div>
 	</div>
 
-	<div class="mt-12 space-y-8">
+	<div id="services" class="mt-12 space-y-8">
 		<h2 class="text-center text-3xl font-semibold">
 			{$_('solution.title')}
 		</h2>
@@ -132,7 +132,7 @@
 		</div>
 	</div>
 
-	<div class="mt-12 space-y-8">
+	<div id="pricing" class="mt-12 space-y-8">
 		<h2 class="text-center text-3xl font-semibold">{$_('pricing.title')}</h2>
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
 			{#each ['starter', 'basic', 'professional'] as plan}

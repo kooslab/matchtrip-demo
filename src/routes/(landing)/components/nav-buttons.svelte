@@ -12,10 +12,10 @@
 
 <div class="hidden h-9 w-full justify-between md:flex">
 	<div>
-		<Button size="sm" variant="ghost" class="rounded-full text-foreground/60" href="/product">
+		<Button size="sm" variant="ghost" class="rounded-full text-foreground/60" href="/#services">
 			Services
 		</Button>
-		<Button size="sm" variant="ghost" class="rounded-full text-foreground/60" href="/pricing"
+		<Button size="sm" variant="ghost" class="rounded-full text-foreground/60" href="/#pricing"
 			>Pricing</Button
 		>
 		<Button size="sm" variant="ghost" class="rounded-full text-foreground/60" href="/blog"
