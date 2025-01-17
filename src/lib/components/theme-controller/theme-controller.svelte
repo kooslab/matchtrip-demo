@@ -9,6 +9,7 @@
 
 	// Reactive statement to update the body class
 	$effect(() => {
+		console.log('Applying theme:', activeTheme);
 		document.body.classList.remove('dark');
 		document.body.classList.add('light');
 	});
