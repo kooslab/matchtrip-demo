@@ -8,8 +8,10 @@
 
 <svelte:window bind:scrollY />
 
-<header class="sticky top-0 w-full border-border bg-background {scrollY > 0 ? 'border-b' : ''}">
-	<nav class="container flex w-full items-center space-x-5 py-4">
+<header
+	class="sticky top-0 z-50 w-full border-border bg-background {scrollY > 0 ? 'border-b' : ''}"
+>
+	<nav class="container flex w-full items-center space-x-8 py-4">
 		<LogoContainer />
 		<NavButtons />
 		<MobileMenu />

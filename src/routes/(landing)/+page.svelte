@@ -89,7 +89,8 @@
 			if (carouselContainer) {
 				const slideWidth = carouselContainer.offsetWidth;
 				currentIndex = (currentIndex + 1) % testimonials.length;
-				const newPosition = -currentIndex * (slideWidth / 2);
+				const offset = window.innerWidth >= 768 ? slideWidth / 2 : slideWidth;
+				const newPosition = -currentIndex * offset;
 
 				carouselContainer.style.transform = `translateX(${newPosition}px)`;
 
@@ -657,7 +658,7 @@
 		</div>
 
 		<!-- Our Service Specialization -->
-		<div class="mx-auto mt-16 max-w-[64rem]">
+		<div id="services" class="mx-auto mt-16 max-w-[64rem]">
 			<div class="text-center">
 				<Badge variant="outline" class="mb-4">Our Specialization</Badge>
 				<h3 class="text-3xl font-bold tracking-tight">
@@ -767,7 +768,10 @@
 	</section>
 
 	<!-- Packages Section -->
-	<section class="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24">
+	<section
+		id="pricing"
+		class="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
+	>
 		<div class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
 			<h2 class="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
 				Simple, Transparent Pricing
@@ -956,7 +960,7 @@
 	</section>
 
 	<!-- Testimonials -->
-	<section class="container py-8 md:py-12 lg:py-24">
+	<section class="container relative z-0 py-8 md:py-12 lg:py-24">
 		<div class="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
 			<h2 class="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
 				What Our Clients Say
@@ -973,10 +977,11 @@
 				style="transform: translateX(0px);"
 			>
 				{#each [...testimonials, ...testimonials] as testimonial}
-					<div class="w-1/2 flex-shrink-0 px-4">
+					<div class="w-full flex-shrink-0 px-4 md:w-1/2">
 						<Card class="h-full">
 							<CardHeader class="mb-4">
-								<CardDescription class="text-lg">"{testimonial.quote}"</CardDescription>
+								<CardDescription class="text-base md:text-lg">"{testimonial.quote}"</CardDescription
+								>
 							</CardHeader>
 							<CardFooter>
 								<div class="flex items-center gap-4">
@@ -1005,8 +1010,9 @@
 							: 'bg-primary/20'}"
 						onclick={() => {
 							currentIndex = i;
-							const slideWidth = carouselContainer.offsetWidth / 2;
-							carouselContainer.style.transform = `translateX(${-i * slideWidth}px)`;
+							const slideWidth = carouselContainer.offsetWidth;
+							const offset = window.innerWidth >= 768 ? slideWidth / 2 : slideWidth;
+							carouselContainer.style.transform = `translateX(${-i * offset}px)`;
 						}}
 						aria-label="Go to slide {i + 1}"
 					/>

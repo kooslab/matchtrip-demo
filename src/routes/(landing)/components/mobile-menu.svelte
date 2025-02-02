@@ -10,49 +10,52 @@
 	import { buttonVariants } from '@/components/ui/button';
 	import { Button } from '@/components/ui/button';
 	import * as Sheet from '@/components/ui/sheet';
+	import { Menu } from 'lucide-svelte';
 
 	let { session } = $derived($page.data);
+
+	const scrollToSection = (sectionId: string) => {
+		const element = document.getElementById(sectionId);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+	};
 </script>
 
-<div class="md:hidden">
-	<Sheet.Root>
-		<Sheet.Trigger class={buttonVariants({ variant: 'ghost', size: 'sm' })}>
-			<MenuIcon />
-		</Sheet.Trigger>
-		<Sheet.Content class="flex flex-col">
-			<Sheet.Header>
-				<Sheet.Title>Kooslab</Sheet.Title>
-			</Sheet.Header>
-			<div class="flex-1 space-y-5">
-				<!-- <div class="space-y-3">
-					{#if session}
-						<form action="/auth?/logout" method="POST" class="contents" use:enhance>
-							<Button class="w-full space-x-1" variant="outline" type="submit">
-								<LogOutIcon size="16" />
-								<span> Log out </span>
-							</Button>
-						</form>
-					{:else}
-						<Button class="w-full" variant="outline" href="/login">Log in</Button>
-						<Button class="w-full" href="/signup">Sign up</Button>
-					{/if}
-				</div> -->
-				<div class="text-muted-foreground">
-					<!-- <Button class="w-full justify-between text-base" variant="ghost">
-						<span> Product </span>
-						<ChevronDownIcon class="h-[1.2rem] w-[1.2rem]" />
-					</Button>
-					<Button class="w-full justify-between text-base" variant="ghost">
-						<span> Pricing </span>
-					</Button> -->
-					<Button class="w-full justify-between text-base" variant="ghost">
-						<span> Blog </span>
-					</Button>
-				</div>
-			</div>
-			<div>
-				<ThemeToggle />
-			</div>
-		</Sheet.Content>
-	</Sheet.Root>
-</div>
+<Sheet.Root>
+	<Sheet.Trigger asChild>
+		<Button variant="ghost" size="icon" class="md:hidden">
+			<Menu class="h-5 w-5" />
+			<span class="sr-only">Toggle menu</span>
+		</Button>
+	</Sheet.Trigger>
+	<Sheet.Content side="left" class="w-[300px]">
+		<Sheet.Header>
+			<Sheet.Title class="text-left">Menu</Sheet.Title>
+		</Sheet.Header>
+		<nav class="flex flex-col gap-6 px-4 py-6">
+			<button
+				class="text-left text-lg font-medium text-muted-foreground transition-colors hover:text-primary"
+				onclick={() => {
+					scrollToSection('services');
+				}}
+			>
+				Services
+			</button>
+			<button
+				class="text-left text-lg font-medium text-muted-foreground transition-colors hover:text-primary"
+				onclick={() => {
+					scrollToSection('pricing');
+				}}
+			>
+				Pricing
+			</button>
+			<a
+				href="/blog"
+				class="text-left text-lg font-medium text-foreground transition-colors hover:text-primary"
+			>
+				Blog
+			</a>
+		</nav>
+	</Sheet.Content>
+</Sheet.Root>
