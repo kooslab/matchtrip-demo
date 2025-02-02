@@ -17,6 +17,7 @@
 	import ThemeToggle from '$lib/components/theme-controller/theme-toggle.svelte';
 	import { createClient } from '@supabase/supabase-js';
 	import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+	import { onMount } from 'svelte';
 
 	const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 
@@ -26,14 +27,42 @@
 				'We used their user stories and acceptance criteria in our RFP. The quotes we got back were so much easier to compare—and we ended up saving thousands!',
 			name: 'Maria L.',
 			title: 'Startup Founder',
-			avatar: 'https://github.com/shadcn.png'
+			avatar: 'https://api.dicebear.com/7.x/personas/svg?seed=MariaL&backgroundColor=b6e3f4'
 		},
 		{
 			quote:
 				'Their Premium Package was a lifesaver. The lo-fi wireframes helped our team visualize user flow, and we knew exactly which outsourcing vendor to pick.',
 			name: 'Thomas K.',
 			title: 'IT Director',
-			avatar: 'https://github.com/shadcn.png'
+			avatar: 'https://api.dicebear.com/7.x/personas/svg?seed=ThomasK&backgroundColor=c0aede'
+		},
+		{
+			quote:
+				'The requirements documentation was crystal clear. Our development team completed the project 30% faster than usual.',
+			name: 'Sarah M.',
+			title: 'Product Manager',
+			avatar: 'https://api.dicebear.com/7.x/personas/svg?seed=SarahM&backgroundColor=ffdfbf'
+		},
+		{
+			quote:
+				'Finally, a service that understands both business needs and technical requirements. Worth every penny!',
+			name: 'James R.',
+			title: 'CTO',
+			avatar: 'https://api.dicebear.com/7.x/personas/svg?seed=JamesR&backgroundColor=d1d4f9'
+		},
+		{
+			quote:
+				'The acceptance criteria they wrote helped us avoid countless revision cycles. Exceptional attention to detail.',
+			name: 'Elena P.',
+			title: 'Engineering Lead',
+			avatar: 'https://api.dicebear.com/7.x/personas/svg?seed=ElenaP&backgroundColor=b6e3f4'
+		},
+		{
+			quote:
+				'Their requirements package gave us the confidence to scale our project internationally. Absolutely professional service.',
+			name: 'Michael C.',
+			title: 'Global Operations Director',
+			avatar: 'https://api.dicebear.com/7.x/personas/svg?seed=MichaelC&backgroundColor=c0aede'
 		}
 	];
 
@@ -50,6 +79,39 @@
 	let isSubmitting = false;
 	let submitError = '';
 	let submitSuccess = false;
+
+	// Add carousel logic
+	let currentIndex = 0;
+	let carouselContainer: HTMLElement;
+
+	onMount(() => {
+		const interval = setInterval(() => {
+			if (carouselContainer) {
+				const slideWidth = carouselContainer.offsetWidth;
+				currentIndex = (currentIndex + 1) % testimonials.length;
+				const newPosition = -currentIndex * (slideWidth / 2);
+
+				carouselContainer.style.transform = `translateX(${newPosition}px)`;
+
+				// If we've reached the end of the original slides
+				if (currentIndex === testimonials.length - 1) {
+					// Wait for the transition to complete
+					setTimeout(() => {
+						// Reset to first slide without transition
+						currentIndex = 0;
+						carouselContainer.style.transition = 'none';
+						carouselContainer.style.transform = 'translateX(0)';
+						// Re-enable transition after reset
+						setTimeout(() => {
+							carouselContainer.style.transition = 'transform 0.5s ease-in-out';
+						}, 50);
+					}, 500);
+				}
+			}
+		}, 5000);
+
+		return () => clearInterval(interval);
+	});
 
 	async function handleSubmit() {
 		isSubmitting = true;
@@ -462,6 +524,248 @@
 		</div>
 	</section>
 
+	<!-- Rational Decision Making Section -->
+	<section class="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24">
+		<div class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+			<h2 class="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+				Make Informed Decisions with Confidence
+			</h2>
+			<p class="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+				Compare your options rationally and choose the best path forward
+			</p>
+		</div>
+
+		<div class="mx-auto grid justify-center gap-8 sm:grid-cols-3 md:max-w-[64rem]">
+			<!-- DIY Approach -->
+			<Card class="relative overflow-hidden">
+				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-yellow-500 to-yellow-300" />
+				<CardHeader>
+					<Badge variant="secondary" class="bg-yellow-500/10 text-yellow-700 dark:text-yellow-400">
+						Do-It-Yourself
+					</Badge>
+					<CardTitle class="mt-4">Internal Requirements</CardTitle>
+				</CardHeader>
+				<CardContent class="space-y-4">
+					<div class="space-y-2">
+						<p class="text-sm font-medium text-green-600 dark:text-green-400">Pros:</p>
+						<ul class="space-y-1 text-sm text-muted-foreground">
+							<li>• Leverages internal knowledge</li>
+							<li>• No additional costs</li>
+						</ul>
+					</div>
+					<div class="space-y-2">
+						<p class="text-sm font-medium text-red-600 dark:text-red-400">Cons:</p>
+						<ul class="space-y-1 text-sm text-muted-foreground">
+							<li>• Often lacks structure</li>
+							<li>• Inconsistent documentation</li>
+							<li>• Time-consuming process</li>
+						</ul>
+					</div>
+				</CardContent>
+			</Card>
+
+			<!-- Full-Time Hire -->
+			<Card class="relative overflow-hidden">
+				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-blue-300" />
+				<CardHeader>
+					<Badge variant="secondary" class="bg-blue-500/10 text-blue-700 dark:text-blue-400">
+						Full-Time Hire
+					</Badge>
+					<CardTitle class="mt-4">BA or PM</CardTitle>
+				</CardHeader>
+				<CardContent class="space-y-4">
+					<div class="space-y-2">
+						<p class="text-sm font-medium text-green-600 dark:text-green-400">Pros:</p>
+						<ul class="space-y-1 text-sm text-muted-foreground">
+							<li>• Deep company knowledge</li>
+							<li>• Continuous availability</li>
+						</ul>
+					</div>
+					<div class="space-y-2">
+						<p class="text-sm font-medium text-red-600 dark:text-red-400">Cons:</p>
+						<ul class="space-y-1 text-sm text-muted-foreground">
+							<li>• High salary costs</li>
+							<li>• Benefits overhead</li>
+							<li>• Long ramp-up time</li>
+						</ul>
+					</div>
+				</CardContent>
+			</Card>
+
+			<!-- Direct Outsourcing -->
+			<Card class="relative overflow-hidden">
+				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-purple-500 to-purple-300" />
+				<CardHeader>
+					<Badge variant="secondary" class="bg-purple-500/10 text-purple-700 dark:text-purple-400">
+						Direct Outsourcing
+					</Badge>
+					<CardTitle class="mt-4">Without Requirements</CardTitle>
+				</CardHeader>
+				<CardContent class="space-y-4">
+					<div class="space-y-2">
+						<p class="text-sm font-medium text-green-600 dark:text-green-400">Pros:</p>
+						<ul class="space-y-1 text-sm text-muted-foreground">
+							<li>• Single vendor solution</li>
+							<li>• Faster startup</li>
+						</ul>
+					</div>
+					<div class="space-y-2">
+						<p class="text-sm font-medium text-red-600 dark:text-red-400">Cons:</p>
+						<ul class="space-y-1 text-sm text-muted-foreground">
+							<li>• High miscommunication risk</li>
+							<li>• Inflated quotes</li>
+							<li>• Unclear deliverables</li>
+						</ul>
+					</div>
+				</CardContent>
+			</Card>
+		</div>
+
+		<!-- Our Solution -->
+		<div
+			class="mx-auto mt-12 max-w-[64rem] rounded-xl border-2 border-primary bg-primary/5 p-8 shadow-[0_0_15px_rgba(var(--primary)_/_0.1)]"
+		>
+			<div class="text-center">
+				<Badge variant="secondary" class="mb-4 bg-primary text-primary-foreground"
+					>Our Solution</Badge
+				>
+				<h3 class="text-2xl font-bold text-primary">Expert Requirements Documentation</h3>
+				<p class="mt-2 text-muted-foreground">Get the best of all worlds without the drawbacks</p>
+			</div>
+			<div class="mt-6 grid gap-4 sm:grid-cols-2">
+				<div class="space-y-2">
+					<div class="flex items-center gap-2">
+						<CheckIcon class="h-5 w-5 text-primary" />
+						<span class="font-medium">Crystal-clear documentation</span>
+					</div>
+					<div class="flex items-center gap-2">
+						<CheckIcon class="h-5 w-5 text-primary" />
+						<span class="font-medium">Professional expertise</span>
+					</div>
+				</div>
+				<div class="space-y-2">
+					<div class="flex items-center gap-2">
+						<CheckIcon class="h-5 w-5 text-primary" />
+						<span class="font-medium">Cost-effective solution</span>
+					</div>
+					<div class="flex items-center gap-2">
+						<CheckIcon class="h-5 w-5 text-primary" />
+						<span class="font-medium">Quick turnaround time</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Our Service Specialization -->
+		<div class="mx-auto mt-16 max-w-[64rem]">
+			<div class="text-center">
+				<Badge variant="outline" class="mb-4">Our Specialization</Badge>
+				<h3 class="text-3xl font-bold tracking-tight">
+					We Specialize in Requirements—So You Can Focus on Outcomes
+				</h3>
+				<p class="mt-4 text-lg text-muted-foreground">
+					Unlike typical dev shops, our singular focus is to write your software requirements with
+					impeccable clarity.
+				</p>
+			</div>
+
+			<div class="mt-12 grid gap-8 md:grid-cols-3">
+				<!-- Vendor Quote Card -->
+				<Card>
+					<CardHeader>
+						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6 text-primary"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+						</div>
+						<CardTitle class="mt-4">Secure Multiple Vendor Quotes</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p class="text-muted-foreground">
+							Get accurate, comparable quotes from multiple vendors and negotiate from a position of
+							strength.
+						</p>
+					</CardContent>
+				</Card>
+
+				<!-- Developer Roadmap Card -->
+				<Card>
+					<CardHeader>
+						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6 text-primary"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+								/>
+							</svg>
+						</div>
+						<CardTitle class="mt-4">Clear Developer Roadmap</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p class="text-muted-foreground">
+							Give your in-house devs a precise blueprint that eliminates back-and-forth guesswork.
+						</p>
+					</CardContent>
+				</Card>
+
+				<!-- Accountability Card -->
+				<Card>
+					<CardHeader>
+						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6 text-primary"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+						</div>
+						<CardTitle class="mt-4">Stakeholder Accountability</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p class="text-muted-foreground">
+							Set clear expectations and hold all parties accountable for on-time, on-budget
+							delivery.
+						</p>
+					</CardContent>
+				</Card>
+			</div>
+
+			<div class="mt-12 rounded-lg border border-muted bg-muted/50 p-6">
+				<p class="text-center text-sm font-medium">
+					We are vendor-agnostic—we don't push for coding hours. Our only goal is to empower you
+					with the perfect blueprint for success.
+				</p>
+			</div>
+		</div>
+	</section>
+
 	<!-- Packages Section -->
 	<section class="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24">
 		<div class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
@@ -662,26 +966,52 @@
 			</p>
 		</div>
 
-		<div class="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] lg:grid-cols-2">
-			{#each testimonials as testimonial}
-				<Card class="flex flex-col justify-between">
-					<CardHeader>
-						<CardDescription class="text-lg">"{testimonial.quote}"</CardDescription>
-					</CardHeader>
-					<CardFooter>
-						<div class="flex items-center gap-4">
-							<Avatar>
-								<AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-								<AvatarFallback>{testimonial.name[0]}</AvatarFallback>
-							</Avatar>
-							<div>
-								<p class="text-sm font-medium leading-none">{testimonial.name}</p>
-								<p class="text-sm text-muted-foreground">{testimonial.title}</p>
-							</div>
-						</div>
-					</CardFooter>
-				</Card>
-			{/each}
+		<div class="relative mx-auto mt-12 max-w-[64rem] overflow-hidden">
+			<div
+				bind:this={carouselContainer}
+				class="flex transition-transform duration-500 ease-in-out"
+				style="transform: translateX(0px);"
+			>
+				{#each [...testimonials, ...testimonials] as testimonial}
+					<div class="w-1/2 flex-shrink-0 px-4">
+						<Card class="h-full">
+							<CardHeader class="mb-4">
+								<CardDescription class="text-lg">"{testimonial.quote}"</CardDescription>
+							</CardHeader>
+							<CardFooter>
+								<div class="flex items-center gap-4">
+									<Avatar>
+										<AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+										<AvatarFallback>{testimonial.name[0]}</AvatarFallback>
+									</Avatar>
+									<div>
+										<p class="text-sm font-medium leading-none">{testimonial.name}</p>
+										<p class="text-sm text-muted-foreground">{testimonial.title}</p>
+									</div>
+								</div>
+							</CardFooter>
+						</Card>
+					</div>
+				{/each}
+			</div>
+
+			<!-- Carousel Indicators -->
+			<div class="mt-6 flex justify-center gap-2">
+				{#each testimonials as _, i}
+					<button
+						class="h-2 w-2 rounded-full transition-colors duration-200 {i ===
+						currentIndex % testimonials.length
+							? 'bg-primary'
+							: 'bg-primary/20'}"
+						onclick={() => {
+							currentIndex = i;
+							const slideWidth = carouselContainer.offsetWidth / 2;
+							carouselContainer.style.transform = `translateX(${-i * slideWidth}px)`;
+						}}
+						aria-label="Go to slide {i + 1}"
+					/>
+				{/each}
+			</div>
 		</div>
 	</section>
 
@@ -729,7 +1059,13 @@
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
-						<form class="space-y-4" on:submit|preventDefault={handleSubmit}>
+						<form
+							class="space-y-4"
+							onsubmit={(e) => {
+								e.preventDefault();
+								handleSubmit();
+							}}
+						>
 							<div class="space-y-2">
 								<Input type="text" placeholder="Name" bind:value={formData.name} required />
 							</div>
