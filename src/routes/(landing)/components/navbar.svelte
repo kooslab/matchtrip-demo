@@ -2,6 +2,7 @@
 	import LogoContainer from './logo-container.svelte';
 	import NavButtons from './nav-buttons.svelte';
 	import MobileMenu from './mobile-menu.svelte';
+	import { ThemeToggle } from '@/components/theme-controller';
 
 	let scrollY: number = $state(0);
 </script>
@@ -14,6 +15,12 @@
 	<nav class="container flex w-full items-center space-x-8 py-4">
 		<LogoContainer />
 		<NavButtons />
-		<MobileMenu />
+
+		<div class="flex items-center justify-end">
+			<span class="md:hidden">
+				<ThemeToggle />
+			</span>
+			<MobileMenu />
+		</div>
 	</nav>
 </header>

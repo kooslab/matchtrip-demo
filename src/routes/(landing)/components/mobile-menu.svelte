@@ -6,7 +6,6 @@
 	import LogOutIcon from 'lucide-svelte/icons/log-out';
 	import ChevronDownIcon from 'lucide-svelte/icons/chevron-down';
 
-	import { ThemeToggle } from '@/components/theme-controller';
 	import { buttonVariants } from '@/components/ui/button';
 	import { Button } from '@/components/ui/button';
 	import * as Sheet from '@/components/ui/sheet';
@@ -14,15 +13,18 @@
 
 	let { session } = $derived($page.data);
 
+	let sheetOpen = $state(false);
+
 	const scrollToSection = (sectionId: string) => {
 		const element = document.getElementById(sectionId);
 		if (element) {
 			element.scrollIntoView({ behavior: 'smooth' });
 		}
+		sheetOpen = false;
 	};
 </script>
 
-<Sheet.Root>
+<Sheet.Root open={sheetOpen} onOpenChange={(open) => (sheetOpen = open)}>
 	<Sheet.Trigger asChild>
 		<Button variant="ghost" size="icon" class="md:hidden">
 			<Menu class="h-5 w-5" />
@@ -53,6 +55,7 @@
 			<a
 				href="/blog"
 				class="text-left text-lg font-medium text-foreground transition-colors hover:text-primary"
+				onclick={() => (sheetOpen = false)}
 			>
 				Blog
 			</a>

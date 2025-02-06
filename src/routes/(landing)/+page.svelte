@@ -162,10 +162,6 @@
 	<ThemeToggle />
 </div>
 
-<div class="block md:hidden">
-	<ThemeToggle />
-</div>
-
 <div class="bg-background">
 	<!-- Hero Section -->
 	<section class="bg-background py-24">
@@ -629,6 +625,8 @@
 		</div>
 
 		<!-- Our Solution -->
+		<div class="scroll-mt-24" id="services"></div>
+
 		<div
 			class="mx-auto mt-12 max-w-[64rem] rounded-xl border-2 border-primary bg-primary/5 p-8 shadow-[0_0_15px_rgba(var(--primary)_/_0.1)]"
 		>
@@ -664,7 +662,7 @@
 		</div>
 
 		<!-- Our Service Specialization -->
-		<div id="services" class="mx-auto mt-16 max-w-[64rem]">
+		<div class="mx-auto mt-16 max-w-[64rem]">
 			<div class="text-center">
 				<Badge variant="outline" class="mb-4">Our Specialization</Badge>
 				<h3 class="text-3xl font-bold tracking-tight">
