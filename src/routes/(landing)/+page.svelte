@@ -13,7 +13,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Avatar, AvatarImage, AvatarFallback } from '$lib/components/ui/avatar';
-	import { CheckIcon } from 'lucide-svelte';
+	import { CheckIcon, TriangleAlert } from 'lucide-svelte';
 	import ThemeToggle from '$lib/components/theme-controller/theme-toggle.svelte';
 	import { createClient } from '@supabase/supabase-js';
 	import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
@@ -258,8 +258,12 @@
 					<div class="order-first space-y-4 md:order-last">
 						<div class="aspect-video w-full overflow-hidden rounded-lg bg-muted">
 							<!-- Image placeholder -->
-							<div class="flex h-full items-center justify-center text-muted-foreground">
-								<p class="text-sm">Image Coming Soon</p>
+							<div class="h-full w-full">
+								<img
+									src="img/frustration_01.png"
+									alt="Frustration"
+									class="h-full w-full object-cover"
+								/>
 							</div>
 						</div>
 						<p class="text-center text-sm text-muted-foreground">
@@ -278,7 +282,9 @@
 			<Card class="mx-auto max-w-4xl">
 				<CardHeader class="border-b border-muted-foreground/20 pb-6">
 					<div class="space-y-2">
-						<p class="text-sm font-semibold text-destructive">CRITICAL BUSINESS RISKS</p>
+						<p class="text-sm font-semibold text-amber-600 dark:text-amber-400">
+							CRITICAL BUSINESS RISKS
+						</p>
 						<CardTitle class="font-serif text-4xl">The Hidden Costs of Poor Requirements</CardTitle>
 						<CardDescription class="max-w-[90%] text-xl text-muted-foreground">
 							When requirements are fuzzy, your project doesn't just slow down—it bleeds money and
@@ -293,8 +299,8 @@
 							<div class="space-y-6">
 								<div class="space-y-4">
 									<div class="flex items-start gap-4">
-										<div class="rounded-full bg-destructive/10 p-3">
-											<Badge variant="destructive" class="h-8 w-8">!</Badge>
+										<div class="rounded-full bg-amber-100 p-3 dark:bg-amber-900/30">
+											<TriangleAlert class="h-8 w-8 text-amber-600 dark:text-amber-400" />
 										</div>
 										<div class="space-y-2">
 											<h3 class="text-xl font-semibold">Rework & Endless Delays</h3>
@@ -302,15 +308,15 @@
 												Developers waste weeks building the wrong features, forcing costly rebuilds
 												that could have been avoided with clear requirements.
 											</p>
-											<p class="text-sm font-semibold text-destructive">
+											<p class="text-sm font-semibold text-amber-600 dark:text-amber-400">
 												Typical Cost: €10,000-30,000 per major revision
 											</p>
 										</div>
 									</div>
 
 									<div class="flex items-start gap-4">
-										<div class="rounded-full bg-destructive/10 p-3">
-											<Badge variant="destructive" class="h-8 w-8">!</Badge>
+										<div class="rounded-full bg-amber-100 p-3 dark:bg-amber-900/30">
+											<TriangleAlert class="h-8 w-8 text-amber-600 dark:text-amber-400" />
 										</div>
 										<div class="space-y-2">
 											<h3 class="text-xl font-semibold">Inflated Vendor Quotes</h3>
@@ -318,15 +324,15 @@
 												Agencies add 40-100% padding to protect against scope uncertainty, making
 												your project significantly more expensive than necessary.
 											</p>
-											<p class="text-sm font-semibold text-destructive">
+											<p class="text-sm font-semibold text-amber-600 dark:text-amber-400">
 												Average Overpayment: 50-75% of project cost
 											</p>
 										</div>
 									</div>
 
 									<div class="flex items-start gap-4">
-										<div class="rounded-full bg-destructive/10 p-3">
-											<Badge variant="destructive" class="h-8 w-8">!</Badge>
+										<div class="rounded-full bg-amber-100 p-3 dark:bg-amber-900/30">
+											<TriangleAlert class="h-8 w-8 text-amber-600 dark:text-amber-400" />
 										</div>
 										<div class="space-y-2">
 											<h3 class="text-xl font-semibold">Stakeholder Trust Crisis</h3>
@@ -334,7 +340,7 @@
 												As delays mount and costs spiral, stakeholder confidence
 												plummets—potentially killing promising projects before completion.
 											</p>
-											<p class="text-sm font-semibold text-destructive">
+											<p class="text-sm font-semibold text-amber-600 dark:text-amber-400">
 												Project Failure Rate: 70% without proper requirements
 											</p>
 										</div>
@@ -348,26 +354,26 @@
 							<h3 class="text-lg font-semibold">The Compounding Impact</h3>
 							<div class="space-y-4">
 								<div class="rounded-lg bg-background p-4">
-									<p class="text-2xl font-bold text-destructive">€50,000+</p>
+									<p class="text-2xl font-bold text-amber-600 dark:text-amber-400">€50,000+</p>
 									<p class="text-sm text-muted-foreground">
 										Average cost overrun for mid-sized projects with poor requirements
 									</p>
 								</div>
 								<div class="rounded-lg bg-background p-4">
-									<p class="text-2xl font-bold text-destructive">6-12 Months</p>
+									<p class="text-2xl font-bold text-amber-600 dark:text-amber-400">6-12 Months</p>
 									<p class="text-sm text-muted-foreground">
 										Typical project delay due to requirement-related issues
 									</p>
 								</div>
 								<div class="rounded-lg bg-background p-4">
-									<p class="text-2xl font-bold text-destructive">3x</p>
+									<p class="text-2xl font-bold text-amber-600 dark:text-amber-400">3x</p>
 									<p class="text-sm text-muted-foreground">
 										Higher maintenance costs due to poorly specified features
 									</p>
 								</div>
 							</div>
-							<div class="mt-6 rounded-lg bg-destructive/10 p-4">
-								<p class="text-sm font-medium text-destructive">
+							<div class="mt-6 rounded-lg bg-amber-100 p-4 dark:bg-amber-900/30">
+								<p class="text-sm font-medium text-amber-600 dark:text-amber-400">
 									"The true cost of poor requirements isn't just money—it's lost market
 									opportunities, damaged relationships, and exhausted teams."
 								</p>
