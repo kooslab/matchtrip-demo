@@ -169,7 +169,7 @@
 			<div class="space-y-4 text-center">
 				<h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
 					Build the Right Software the First Time
-					<span class="text-primary">—Starting at Just €499!</span>
+					<p class="text-primary">Start Today without further delays</p>
 				</h1>
 				<p class="mx-auto max-w-[700px] text-lg text-muted-foreground sm:text-xl">
 					Put an end to guesswork and misaligned budgets. Our expert-crafted requirements, user
@@ -185,16 +185,7 @@
 						onclick={() =>
 							document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
 					>
-						Get Started at €499
-					</Button>
-					<Button
-						size="lg"
-						variant="outline"
-						class="w-full sm:w-auto"
-						onclick={() =>
-							document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-					>
-						Schedule Free Call
+						<span class="text-lg font-semibold text-white">Get Your Free Consultation Today!</span>
 					</Button>
 				</div>
 			</div>
@@ -798,7 +789,7 @@
 					<ul class="space-y-2">
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Detailed User Stories (up to 15)</span>
+							<span>Detailed User Stories (up to 50)</span>
 						</li>
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
@@ -807,6 +798,10 @@
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
 							<span>User Flow Analysis</span>
+						</li>
+						<li class="flex items-center gap-2">
+							<CheckIcon class="h-5 w-5 text-primary" />
+							<span>Includes a 1-day participatory workshop</span>
 						</li>
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
@@ -841,7 +836,7 @@
 				<CardHeader>
 					<CardTitle class="flex items-center justify-between">
 						Professional Package
-						<span class="text-3xl font-bold">€2,999</span>
+						<span class="text-3xl font-bold">€2,499</span>
 					</CardTitle>
 					<CardDescription>For Established Businesses</CardDescription>
 				</CardHeader>
@@ -853,7 +848,11 @@
 						</li>
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Extended User Stories (up to 30)</span>
+							<span>Extend 1 additional day of participatory workshop (2-days in total)</span>
+						</li>
+						<li class="flex items-center gap-2">
+							<CheckIcon class="h-5 w-5 text-primary" />
+							<span>Extended User Stories (up to 100)</span>
 						</li>
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
