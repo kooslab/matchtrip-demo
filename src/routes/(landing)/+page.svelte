@@ -789,7 +789,7 @@
 					<ul class="space-y-2">
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Detailed User Stories (up to 50)</span>
+							<span>Detailed User Stories (up to 60)</span>
 						</li>
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
@@ -852,7 +852,7 @@
 						</li>
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Extended User Stories (up to 100)</span>
+							<span>Extended User Stories (up to 120)</span>
 						</li>
 						<li class="flex items-center gap-2">
 							<CheckIcon class="h-5 w-5 text-primary" />
