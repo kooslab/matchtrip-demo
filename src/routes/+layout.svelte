@@ -13,6 +13,7 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { Toaster } from 'svelte-sonner';
 	import { MetaTags, deepMerge } from 'svelte-meta-tags';
+	import Navbar from './(landing)/components/navbar.svelte';
 
 	interface Props {
 		data: LayoutData;
@@ -44,6 +45,7 @@
 <ModeWatcher defaultMode="system" />
 <Toaster position="top-center" />
 <MetaTags {...metaTags} />
+<Navbar />
 
 {#await waitLocale()}
 	<div class="loading-container">

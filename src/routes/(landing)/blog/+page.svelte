@@ -26,7 +26,7 @@
 			<article class="group relative rounded-lg border p-6 hover:bg-muted/50">
 				<a href={`/blog/${post.slug}`} class="absolute inset-0 z-0" aria-label={post.title} />
 				<div class="space-y-2">
-					<div class="flex items-center gap-x-2 text-sm text-muted-foreground">
+					<div class="flex items-center gap-x-2 text-sm text-muted-foreground dark:text-gray-400">
 						<time datetime={post.date.toISOString()}>
 							{formatDate(post.date)}
 						</time>
@@ -35,11 +35,11 @@
 							<span>{post.readingTime}</span>
 						{/if}
 					</div>
-					<h2 class="text-2xl font-semibold tracking-tight">
+					<h2 class="text-2xl font-semibold tracking-tight text-foreground dark:text-gray-100">
 						{post.title}
 					</h2>
 					{#if post.description}
-						<p class="text-muted-foreground">
+						<p class="text-muted-foreground dark:text-gray-400">
 							{post.description}
 						</p>
 					{/if}

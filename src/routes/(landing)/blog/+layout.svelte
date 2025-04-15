@@ -9,7 +9,7 @@
 </script>
 
 <div class="container mx-auto max-w-[1024px] p-4">
-	<div class="prose">
+	<div class="prose dark:prose-invert">
 		{@render children?.()}
 	</div>
 </div>

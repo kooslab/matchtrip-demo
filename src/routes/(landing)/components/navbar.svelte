@@ -16,10 +16,8 @@
 		<LogoContainer />
 		<NavButtons />
 
-		<div class="flex items-center justify-end">
-			<span class="md:hidden">
-				<ThemeToggle />
-			</span>
+		<div class="flex flex-1 items-center justify-end space-x-4">
+			<ThemeToggle />
 			<MobileMenu />
 		</div>
 	</nav>
