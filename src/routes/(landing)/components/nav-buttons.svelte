@@ -8,29 +8,22 @@
 	import * as Dropdown from '@/components/ui/dropdown-menu';
 
 	let { session } = $derived($page.data);
-
-	const scrollToSection = (sectionId: string) => {
-		const element = document.getElementById(sectionId);
-		if (element) {
-			element.scrollIntoView({ behavior: 'smooth' });
-		}
-	};
 </script>
 
 <div class="hidden h-9 w-full justify-between md:flex">
 	<div>
-		<button
+		<a
+			href="/#services"
 			class="mr-4 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-			onclick={() => scrollToSection('services')}
 		>
 			Services
-		</button>
-		<button
+		</a>
+		<a
+			href="/#pricing"
 			class="mr-4 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-			onclick={() => scrollToSection('pricing')}
 		>
 			Pricing
-		</button>
+		</a>
 		<Button size="sm" variant="ghost" class="rounded-full text-foreground/60" href="/blog"
 			>Blog</Button
 		>

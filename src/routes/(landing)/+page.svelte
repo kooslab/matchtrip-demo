@@ -158,10 +158,6 @@
 	}
 </script>
 
-<div class="fixed right-4 top-4 z-50 hidden md:block">
-	<ThemeToggle />
-</div>
-
 <div class="bg-background">
 	<!-- Hero Section -->
 	<section class="bg-background py-24">
