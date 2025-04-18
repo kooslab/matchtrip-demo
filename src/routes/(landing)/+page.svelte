@@ -18,6 +18,7 @@
 	import { createClient } from '@supabase/supabase-js';
 	import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 	import { onMount } from 'svelte';
+	import RequirementsPreview from '$lib/components/ui/requirements-preview.svelte';
 
 	const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 
@@ -648,513 +649,119 @@
 			</div>
 		</div>
 
-		<!-- Our Service Specialization -->
-		<div class="mx-auto mt-16 max-w-[64rem]">
-			<div class="text-center">
-				<Badge variant="outline" class="mb-4">Our Specialization</Badge>
-				<h3 class="text-3xl font-bold tracking-tight">
-					We Specialize in Requirements—So You Can Focus on Outcomes
-				</h3>
-				<p class="mt-4 text-lg text-muted-foreground">
-					Unlike typical dev shops, our singular focus is to write your software requirements with
-					impeccable clarity.
-				</p>
+		<!-- Requirements Document Preview Section -->
+		<section class="bg-background py-24" id="requirements-preview">
+			<div class="container mx-auto px-4">
+				<RequirementsPreview />
 			</div>
+		</section>
 
-			<div class="mt-12 grid gap-8 md:grid-cols-3">
-				<!-- Vendor Quote Card -->
-				<Card>
-					<CardHeader>
-						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6 text-primary"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
+		<!-- Contact Form Section -->
+		<section class="bg-muted py-24" id="contact-form">
+			<div class="container mx-auto px-4">
+				<div class="mx-auto max-w-xl">
+					<Card>
+						<CardHeader>
+							<CardTitle>Have Questions? Let's Talk.</CardTitle>
+							<CardDescription>
+								Our friendly consultants will guide you to the perfect requirements package for your
+								project.
+							</CardDescription>
+						</CardHeader>
+						<CardContent>
+							<form
+								class="space-y-4"
+								onsubmit={(e) => {
+									e.preventDefault();
+									handleSubmit();
+								}}
 							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-								/>
-							</svg>
-						</div>
-						<CardTitle class="mt-4">Secure Multiple Vendor Quotes</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<p class="text-muted-foreground">
-							Get accurate, comparable quotes from multiple vendors and negotiate from a position of
-							strength.
-						</p>
-					</CardContent>
-				</Card>
-
-				<!-- Developer Roadmap Card -->
-				<Card>
-					<CardHeader>
-						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6 text-primary"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-								/>
-							</svg>
-						</div>
-						<CardTitle class="mt-4">Clear Developer Roadmap</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<p class="text-muted-foreground">
-							Give your in-house devs a precise blueprint that eliminates back-and-forth guesswork.
-						</p>
-					</CardContent>
-				</Card>
-
-				<!-- Accountability Card -->
-				<Card>
-					<CardHeader>
-						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6 text-primary"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-								/>
-							</svg>
-						</div>
-						<CardTitle class="mt-4">Stakeholder Accountability</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<p class="text-muted-foreground">
-							Set clear expectations and hold all parties accountable for on-time, on-budget
-							delivery.
-						</p>
-					</CardContent>
-				</Card>
-			</div>
-
-			<div class="mt-12 rounded-lg border border-muted bg-muted/50 p-6">
-				<p class="text-center text-sm font-medium">
-					We are vendor-agnostic—we don't push for coding hours. Our only goal is to empower you
-					with the perfect blueprint for success.
-				</p>
-			</div>
-		</div>
-	</section>
-
-	<!-- Packages Section -->
-	<section
-		id="pricing"
-		class="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
-	>
-		<div class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-			<h2 class="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-				Simple, Transparent Pricing
-			</h2>
-			<p class="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-				Investment in requirements now saves 10x in development costs later
-			</p>
-		</div>
-
-		<div class="mx-auto grid justify-center gap-8 sm:grid-cols-2 md:max-w-[64rem]">
-			<Card class="flex flex-col">
-				<CardHeader>
-					<CardTitle class="flex items-center justify-between">
-						Essential Package
-						<span class="text-3xl font-bold">€1,499</span>
-					</CardTitle>
-					<CardDescription>For Startups & MVPs</CardDescription>
-				</CardHeader>
-				<CardContent class="flex-1">
-					<ul class="space-y-2">
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Detailed User Stories (up to 60)</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Core Features Documentation</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>User Flow Analysis</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Includes a 1-day participatory workshop</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>RFQ-Ready Requirements Doc</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>2 Revision Rounds</span>
-						</li>
-					</ul>
-					<div class="mt-6 rounded-lg bg-muted p-4">
-						<p class="text-sm text-muted-foreground">
-							Perfect for projects with estimated development budgets of €20k-50k
-						</p>
-					</div>
-				</CardContent>
-				<CardFooter class="mt-auto pt-8">
-					<Button
-						class="w-full"
-						onclick={() =>
-							document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-					>
-						Get Started
-					</Button>
-				</CardFooter>
-			</Card>
-
-			<Card class="relative flex flex-col">
-				<div class="absolute -top-4 left-1/2 -translate-x-1/2">
-					<Badge variant="secondary" class="px-6">Most Popular</Badge>
-				</div>
-				<CardHeader>
-					<CardTitle class="flex items-center justify-between">
-						Professional Package
-						<span class="text-3xl font-bold">€2,499</span>
-					</CardTitle>
-					<CardDescription>For Established Businesses</CardDescription>
-				</CardHeader>
-				<CardContent class="flex-1">
-					<ul class="space-y-2">
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Everything in Essential</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Extend 1 additional day of participatory workshop (2-days in total)</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Extended User Stories (up to 120)</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Interactive Lo-Fi Wireframes</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Detailed Acceptance Criteria</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Development Cost Estimation</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>4 Revision Rounds</span>
-						</li>
-						<li class="flex items-center gap-2">
-							<CheckIcon class="h-5 w-5 text-primary" />
-							<span>Vendor Selection Guidance</span>
-						</li>
-					</ul>
-					<div class="mt-6 rounded-lg bg-muted p-4">
-						<p class="text-sm text-muted-foreground">
-							Ideal for projects with estimated development budgets of €50k-200k
-						</p>
-					</div>
-				</CardContent>
-				<CardFooter class="mt-auto pt-8">
-					<Button
-						class="w-full"
-						variant="secondary"
-						onclick={() =>
-							document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-					>
-						Get Professional
-					</Button>
-				</CardFooter>
-			</Card>
-		</div>
-
-		<!-- Enterprise Option -->
-		<div class="mx-auto mt-12 max-w-[64rem] rounded-xl bg-muted p-8 text-center">
-			<h3 class="text-2xl font-bold">Enterprise Solutions</h3>
-			<p class="mt-2 text-muted-foreground">
-				For complex projects with development budgets over €200k
-			</p>
-			<div class="mt-6 space-y-4">
-				<p class="text-sm text-muted-foreground">
-					Custom requirements gathering workshops, multiple stakeholder alignment sessions, and
-					comprehensive technical specifications.
-				</p>
-				<Button
-					variant="outline"
-					onclick={() =>
-						document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-				>
-					Contact for Custom Quote
-				</Button>
-			</div>
-		</div>
-
-		<!-- Strategic Add-ons -->
-		<div class="mx-auto mt-12 max-w-[64rem]">
-			<h3 class="mb-6 text-center text-2xl font-bold">Strategic Add-ons</h3>
-			<div class="grid gap-4 sm:grid-cols-3">
-				<Card>
-					<CardHeader>
-						<CardTitle class="flex items-center justify-between">
-							Technical Architecture
-							<span class="text-xl font-bold">+€999</span>
-						</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<p class="text-sm text-muted-foreground">
-							Detailed technical stack recommendations and architecture diagrams
-						</p>
-					</CardContent>
-				</Card>
-				<Card>
-					<CardHeader>
-						<CardTitle class="flex items-center justify-between">
-							Vendor RFQ Management
-							<span class="text-xl font-bold">+€799</span>
-						</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<p class="text-sm text-muted-foreground">
-							We handle the RFQ process and provide detailed quote analysis
-						</p>
-					</CardContent>
-				</Card>
-				<Card>
-					<CardHeader>
-						<CardTitle class="flex items-center justify-between">
-							Vendor Selection Review
-							<span class="text-xl font-bold">+€1,000</span>
-						</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<p class="text-sm text-muted-foreground">
-							In-depth review and comparison of each vendor proposal
-						</p>
-					</CardContent>
-				</Card>
-			</div>
-		</div>
-	</section>
-
-	<!-- Testimonials -->
-	<section class="container relative z-0 py-8 md:py-12 lg:py-24">
-		<div class="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-			<h2 class="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-				What Our Clients Say
-			</h2>
-			<p class="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-				Don't just take our word for it
-			</p>
-		</div>
-
-		<div class="relative mx-auto mt-12 max-w-[64rem] overflow-hidden">
-			<div
-				bind:this={carouselContainer}
-				class="flex transition-transform duration-500 ease-in-out"
-				style="transform: translateX(0px);"
-			>
-				{#each [...testimonials, ...testimonials] as testimonial}
-					<div class="w-full flex-shrink-0 px-4 md:w-1/2">
-						<Card class="h-full">
-							<CardHeader class="mb-4">
-								<CardDescription class="text-base md:text-lg">"{testimonial.quote}"</CardDescription
-								>
-							</CardHeader>
-							<CardFooter>
-								<div class="flex items-center gap-4">
-									<Avatar>
-										<AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-										<AvatarFallback>{testimonial.name[0]}</AvatarFallback>
-									</Avatar>
-									<div>
-										<p class="text-sm font-medium leading-none">{testimonial.name}</p>
-										<p class="text-sm text-muted-foreground">{testimonial.title}</p>
-									</div>
+								<div class="space-y-2">
+									<Input type="text" placeholder="Name" bind:value={formData.name} required />
 								</div>
-							</CardFooter>
-						</Card>
-					</div>
-				{/each}
-			</div>
-
-			<!-- Carousel Indicators -->
-			<div class="mt-6 flex justify-center gap-2">
-				{#each testimonials as _, i}
-					<button
-						class="h-2 w-2 rounded-full transition-colors duration-200 {i ===
-						currentIndex % testimonials.length
-							? 'bg-primary'
-							: 'bg-primary/20'}"
-						onclick={() => {
-							currentIndex = i;
-							const slideWidth = carouselContainer.offsetWidth;
-							const offset = window.innerWidth >= 768 ? slideWidth / 2 : slideWidth;
-							carouselContainer.style.transform = `translateX(${-i * offset}px)`;
-						}}
-						aria-label="Go to slide {i + 1}"
-					/>
-				{/each}
-			</div>
-		</div>
-	</section>
-
-	<!-- Bottom CTA Section -->
-	<section class="container px-4 py-8 md:py-12 lg:py-24">
-		<div class="mx-auto max-w-[58rem] space-y-8 text-center">
-			<h2 class="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-				Ready to Empower Your Project?
-			</h2>
-			<p class="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-				Stop letting guesswork stand in the way of your product's success.
-			</p>
-			<div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
-				<Button
-					size="lg"
-					class="w-full sm:w-auto"
-					onclick={() =>
-						document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-				>
-					Get Started at €499
-				</Button>
-				<Button
-					size="lg"
-					variant="outline"
-					class="w-full sm:w-auto"
-					onclick={() =>
-						document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-				>
-					Schedule Free Call
-				</Button>
-			</div>
-		</div>
-	</section>
-
-	<!-- Contact Form Section -->
-	<section class="bg-muted py-24" id="contact-form">
-		<div class="container mx-auto px-4">
-			<div class="mx-auto max-w-xl">
-				<Card>
-					<CardHeader>
-						<CardTitle>Have Questions? Let's Talk.</CardTitle>
-						<CardDescription>
-							Our friendly consultants will guide you to the perfect requirements package for your
-							project.
-						</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<form
-							class="space-y-4"
-							onsubmit={(e) => {
-								e.preventDefault();
-								handleSubmit();
-							}}
-						>
-							<div class="space-y-2">
-								<Input type="text" placeholder="Name" bind:value={formData.name} required />
-							</div>
-							<div class="space-y-2">
-								<Input type="email" placeholder="Email" bind:value={formData.email} required />
-							</div>
-							<div class="space-y-2">
-								<Input type="tel" placeholder="Phone" bind:value={formData.phone} required />
-							</div>
-							<div class="space-y-2">
-								<Textarea
-									placeholder="Brief Project Outline"
-									bind:value={formData.projectOutline}
-									required
-								/>
-							</div>
-							<div class="space-y-4">
-								<div class="flex items-center space-x-2">
-									<input
-										type="checkbox"
-										id="privacy-consent"
-										bind:checked={formData.privacyConsent}
-										class="h-4 w-4 rounded border-input"
+								<div class="space-y-2">
+									<Input type="email" placeholder="Email" bind:value={formData.email} required />
+								</div>
+								<div class="space-y-2">
+									<Input type="tel" placeholder="Phone" bind:value={formData.phone} required />
+								</div>
+								<div class="space-y-2">
+									<Textarea
+										placeholder="Brief Project Outline"
+										bind:value={formData.projectOutline}
 										required
 									/>
-									<label for="privacy-consent" class="text-sm text-muted-foreground">
-										I agree to the processing of my personal data according to the Privacy Policy *
-									</label>
 								</div>
+								<div class="space-y-4">
+									<div class="flex items-center space-x-2">
+										<input
+											type="checkbox"
+											id="privacy-consent"
+											bind:checked={formData.privacyConsent}
+											class="h-4 w-4 rounded border-input"
+											required
+										/>
+										<label for="privacy-consent" class="text-sm text-muted-foreground">
+											I agree to the processing of my personal data according to the Privacy Policy
+											*
+										</label>
+									</div>
 
-								<div class="flex items-center space-x-2">
-									<input
-										type="checkbox"
-										id="marketing-consent"
-										bind:checked={formData.marketingConsent}
-										class="h-4 w-4 rounded border-input"
+									<div class="flex items-center space-x-2">
+										<input
+											type="checkbox"
+											id="marketing-consent"
+											bind:checked={formData.marketingConsent}
+											class="h-4 w-4 rounded border-input"
+										/>
+										<label for="marketing-consent" class="text-sm text-muted-foreground">
+											I would like to receive updates about products and services via email
+										</label>
+									</div>
+								</div>
+								<div class="hidden">
+									<Input
+										type="text"
+										name="website"
+										id="website"
+										tabindex={-1}
+										autocomplete="off"
+										bind:value={formData.website}
 									/>
-									<label for="marketing-consent" class="text-sm text-muted-foreground">
-										I would like to receive updates about products and services via email
-									</label>
 								</div>
-							</div>
-							<div class="hidden">
-								<Input
-									type="text"
-									name="website"
-									id="website"
-									tabindex={-1}
-									autocomplete="off"
-									bind:value={formData.website}
-								/>
-							</div>
-							{#if submitError}
-								<p class="text-sm text-destructive">{submitError}</p>
-							{/if}
-							{#if submitSuccess}
-								<div class="rounded-md bg-primary/10 p-4">
-									<p class="text-center text-sm text-primary">
-										Thank you for your submission! Our team will contact you shortly.
-									</p>
-								</div>
-							{/if}
-							<Button
-								type="submit"
-								class="w-full"
-								disabled={isSubmitting || !formData.privacyConsent}
-							>
-								{isSubmitting ? 'Submitting...' : 'Submit'}
-							</Button>
-						</form>
-					</CardContent>
-				</Card>
+								{#if submitError}
+									<p class="text-sm text-destructive">{submitError}</p>
+								{/if}
+								{#if submitSuccess}
+									<div class="rounded-md bg-primary/10 p-4">
+										<p class="text-center text-sm text-primary">
+											Thank you for your submission! Our team will contact you shortly.
+										</p>
+									</div>
+								{/if}
+								<Button
+									type="submit"
+									class="w-full"
+									disabled={isSubmitting || !formData.privacyConsent}
+								>
+									{isSubmitting ? 'Submitting...' : 'Submit'}
+								</Button>
+							</form>
+						</CardContent>
+					</Card>
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<!-- Footer -->
-	<footer class="bg-background py-12">
-		<div class="container mx-auto px-4 text-center">
-			<p class="text-muted-foreground">
-				"When you arm yourself with precise requirements, you empower your team, your stakeholders,
-				and your future development partners to execute flawlessly."
-			</p>
-			<p class="mt-2 font-semibold">— Ilmo Koo, CEO at Kooslab</p>
-		</div>
-	</footer>
+		<!-- Footer -->
+		<footer class="bg-background py-12">
+			<div class="container mx-auto px-4 text-center">
+				<p class="text-muted-foreground">
+					"When you arm yourself with precise requirements, you empower your team, your
+					stakeholders, and your future development partners to execute flawlessly."
+				</p>
+				<p class="mt-2 font-semibold">— Ilmo Koo, CEO at Kooslab</p>
+			</div>
+		</footer>
+	</section>
 </div>
