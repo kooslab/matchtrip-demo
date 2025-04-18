@@ -2,7 +2,17 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import { requirements } from '$lib/data/requirements';
+	import { requirements as allRequirements } from '$lib/data/requirements';
+	import {
+		Card,
+		CardHeader,
+		CardTitle,
+		CardContent,
+		CardDescription
+	} from '$lib/components/ui/card';
+
+	// Show only the first 5 requirements for the preview
+	const requirements = allRequirements.slice(0, 5);
 </script>
 
 <div class="mt-16">
@@ -14,8 +24,9 @@
 		</p>
 	</div>
 
+	<!-- Desktop Table View -->
 	<div
-		class="mt-8 overflow-x-auto rounded-lg border border-muted bg-background shadow-lg dark:border-muted-foreground/20"
+		class="mt-8 hidden overflow-x-auto rounded-lg border border-muted bg-background shadow-lg dark:border-muted-foreground/20 md:block"
 	>
 		<table class="w-full border-collapse">
 			<thead class="bg-muted/50 dark:bg-muted/30">
@@ -71,14 +82,46 @@
 		</table>
 	</div>
 
+	<!-- Mobile Card View -->
+	<div class="mt-8 space-y-4 md:hidden">
+		{#each requirements as requirement}
+			<Card class="overflow-hidden">
+				<CardHeader class="bg-muted/50 p-4 dark:bg-muted/30">
+					<div class="flex items-center justify-between">
+						<CardTitle class="text-base font-medium text-primary">{requirement.id}</CardTitle>
+						<Badge
+							variant={requirement.priority === 'High' ? 'destructive' : 'secondary'}
+							class={requirement.priority === 'High'
+								? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+								: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'}
+						>
+							{requirement.priority}
+						</Badge>
+					</div>
+					<p class="text-sm text-muted-foreground">{requirement.epic}</p>
+				</CardHeader>
+				<CardContent class="p-4">
+					<p class="mb-3 text-sm font-medium">User Story:</p>
+					<p class="mb-4 text-sm leading-relaxed">{requirement.userStory}</p>
+					<p class="mb-2 text-sm font-medium">Acceptance Criteria:</p>
+					<ul class="list-inside list-disc space-y-1.5 text-sm text-muted-foreground">
+						{#each requirement.acceptanceCriteria as criteria}
+							<li class="pl-2">{criteria}</li>
+						{/each}
+					</ul>
+				</CardContent>
+			</Card>
+		{/each}
+	</div>
+
 	<div class="mt-8 text-center">
 		<p class="text-sm text-muted-foreground">
 			This is just a preview. Our full requirements document includes detailed technical
 			specifications, wireframes, and implementation guidelines.
 		</p>
-		<div class="mt-6 flex items-center justify-center space-x-4">
+		<div class="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row sm:space-x-4">
 			<Button
-				class="bg-primary/90 hover:bg-primary"
+				class="bg-primary/90 hover:bg-primary sm:w-auto"
 				onclick={() =>
 					document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
 			>
@@ -86,7 +129,7 @@
 			</Button>
 			<Button
 				variant="outline"
-				class="border-primary/20 hover:bg-primary/5"
+				class="border-primary/20 hover:bg-primary/5 sm:w-auto"
 				onclick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
 			>
 				View Pricing

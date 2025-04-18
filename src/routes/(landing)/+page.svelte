@@ -67,7 +67,7 @@
 		}
 	];
 
-	let formData = {
+	let formData = $state({
 		name: '',
 		email: '',
 		phone: '',
@@ -75,15 +75,15 @@
 		privacyConsent: false,
 		marketingConsent: false,
 		website: ''
-	};
+	});
 
-	let isSubmitting = false;
-	let submitError = '';
-	let submitSuccess = false;
+	let isSubmitting = $state(false);
+	let submitError = $state('');
+	let submitSuccess = $state(false);
 
 	// Add carousel logic
-	let currentIndex = 0;
-	let carouselContainer: HTMLElement;
+	let currentIndex = $state(0);
+	let carouselContainer: HTMLElement | null = $state(null);
 
 	onMount(() => {
 		const interval = setInterval(() => {
@@ -95,17 +95,13 @@
 
 				carouselContainer.style.transform = `translateX(${newPosition}px)`;
 
-				// If we've reached the end of the original slides
 				if (currentIndex === testimonials.length - 1) {
-					// Wait for the transition to complete
 					setTimeout(() => {
-						// Reset to first slide without transition
 						currentIndex = 0;
-						carouselContainer.style.transition = 'none';
-						carouselContainer.style.transform = 'translateX(0)';
-						// Re-enable transition after reset
+						carouselContainer!.style.transition = 'none';
+						carouselContainer!.style.transform = 'translateX(0)';
 						setTimeout(() => {
-							carouselContainer.style.transition = 'transform 0.5s ease-in-out';
+							carouselContainer!.style.transition = 'transform 0.5s ease-in-out';
 						}, 50);
 					}, 500);
 				}
@@ -161,14 +157,14 @@
 
 <div class="bg-background">
 	<!-- Hero Section -->
-	<section class="bg-background py-24">
+	<section class="bg-background py-16 sm:py-24">
 		<div class="container mx-auto px-4">
 			<div class="space-y-4 text-center">
-				<h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+				<h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
 					Build the Right Software the First Time
-					<p class="text-primary">Start Today without further delays</p>
+					<p class="mt-1 text-primary sm:mt-2">Start Today without further delays</p>
 				</h1>
-				<p class="mx-auto max-w-[700px] text-lg text-muted-foreground sm:text-xl">
+				<p class="mx-auto max-w-[700px] text-base text-muted-foreground sm:text-lg md:text-xl">
 					Put an end to guesswork and misaligned budgets. Our expert-crafted requirements, user
 					stories, and acceptance criteria empower you to launch successfully—or confidently compare
 					multiple vendor quotes.
@@ -178,11 +174,11 @@
 				>
 					<Button
 						size="lg"
-						class="w-full sm:w-auto"
+						class="w-full text-base sm:w-auto sm:text-lg"
 						onclick={() =>
 							document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
 					>
-						<span class="text-lg font-semibold text-white">Get Your Free Consultation Today!</span>
+						<span class="font-semibold text-white">Get Your Free Consultation Today!</span>
 					</Button>
 				</div>
 			</div>
@@ -384,7 +380,7 @@
 		<div class="mx-auto grid justify-center gap-8 sm:grid-cols-3 md:max-w-[64rem]">
 			<!-- Apples-to-Apples Card -->
 			<Card class="relative overflow-hidden">
-				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-primary/50" />
+				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-primary/50"></div>
 				<CardHeader class="space-y-2">
 					<div class="flex items-center gap-2">
 						<Badge variant="secondary" class="bg-primary/10">Strategic Advantage</Badge>
@@ -421,7 +417,7 @@
 
 			<!-- Transparent Scope Card -->
 			<Card class="relative overflow-hidden">
-				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-primary/50" />
+				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-primary/50"></div>
 				<CardHeader class="space-y-2">
 					<div class="flex items-center gap-2">
 						<Badge variant="secondary" class="bg-primary/10">Risk Mitigation</Badge>
@@ -458,7 +454,7 @@
 
 			<!-- Confidence Card -->
 			<Card class="relative overflow-hidden">
-				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-primary/50" />
+				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-primary/50"></div>
 				<CardHeader class="space-y-2">
 					<div class="flex items-center gap-2">
 						<Badge variant="secondary" class="bg-primary/10">Quality Assurance</Badge>
@@ -529,7 +525,9 @@
 		<div class="mx-auto grid justify-center gap-8 sm:grid-cols-3 md:max-w-[64rem]">
 			<!-- DIY Approach -->
 			<Card class="relative overflow-hidden">
-				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-yellow-500 to-yellow-300" />
+				<div
+					class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-yellow-500 to-yellow-300"
+				></div>
 				<CardHeader>
 					<Badge variant="secondary" class="bg-yellow-500/10 text-yellow-700 dark:text-yellow-400">
 						Do-It-Yourself
@@ -557,7 +555,7 @@
 
 			<!-- Full-Time Hire -->
 			<Card class="relative overflow-hidden">
-				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-blue-300" />
+				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-blue-300"></div>
 				<CardHeader>
 					<Badge variant="secondary" class="bg-blue-500/10 text-blue-700 dark:text-blue-400">
 						Full-Time Hire
@@ -585,7 +583,9 @@
 
 			<!-- Direct Outsourcing -->
 			<Card class="relative overflow-hidden">
-				<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-purple-500 to-purple-300" />
+				<div
+					class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-purple-500 to-purple-300"
+				></div>
 				<CardHeader>
 					<Badge variant="secondary" class="bg-purple-500/10 text-purple-700 dark:text-purple-400">
 						Direct Outsourcing
@@ -764,4 +764,13 @@
 			</div>
 		</footer>
 	</section>
+
+	<!-- Testimonials Section -->
+	<div class="overflow-hidden">
+		<div bind:this={carouselContainer} class="flex transition-transform duration-500 ease-in-out">
+			{#each testimonials as testimonial}
+				<!-- Testimonial content -->
+			{/each}
+		</div>
+	</div>
 </div>
