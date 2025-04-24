@@ -11,8 +11,25 @@
 	let { currentRole }: Props = $props();
 
 	function toggleRole() {
-		currentRole.update((role) => (role === 'client' ? 'guide' : 'client'));
+		console.log('Toggling role...');
+		currentRole.update((role) => {
+			const newRole = role === 'client' ? 'guide' : 'client';
+			console.log('New role will be:', newRole);
+			return newRole;
+		});
 	}
+
+	// Role display text mapping
+	const roleDisplayNames = {
+		client: '여행자',
+		guide: '가이드'
+	};
+
+	// Use $derived for reactive calculations
+	let currentRoleDisplay = $derived(roleDisplayNames[$currentRole]);
+	let switchToRoleDisplay = $derived(
+		roleDisplayNames[$currentRole === 'client' ? 'guide' : 'client']
+	);
 </script>
 
 <nav
@@ -25,15 +42,14 @@
 			</a>
 			<nav class="flex items-center space-x-6 text-sm font-medium">
 				{#if $currentRole === 'client'}
-					<a href="/new-journey" class:active={$page.url.pathname === '/new-journey'}>New Journey</a
-					>
+					<a href="/new-journey" class:active={$page.url.pathname === '/new-journey'}>새 여행</a>
 					<a href="/my-journey" class:active={$page.url.pathname.startsWith('/my-journey')}
-						>My Journeys</a
+						>나의 여행</a
 					>
 				{:else}
 					<a
 						href="/browse-journeys"
-						class:active={$page.url.pathname.startsWith('/browse-journeys')}>Browse Journeys</a
+						class:active={$page.url.pathname.startsWith('/browse-journeys')}>여행 찾아보기</a
 					>
 				{/if}
 			</nav>
@@ -41,10 +57,10 @@
 
 		<div class="flex items-center space-x-4">
 			<span class="text-sm text-muted-foreground"
-				>Current View: <span class="font-semibold capitalize">{$currentRole}</span></span
+				>현재 모드: <span class="font-semibold">{currentRoleDisplay}</span></span
 			>
 			<Button variant="outline" size="sm" onclick={toggleRole}>
-				Switch to {$currentRole === 'client' ? 'Guide' : 'Client'} View
+				{switchToRoleDisplay} 모드로 전환
 			</Button>
 			<!-- Add Login/Logout buttons here if needed later -->
 		</div>

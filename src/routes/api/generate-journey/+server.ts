@@ -8,22 +8,42 @@ const openai = new OpenAI({
 
 export async function POST({ request }) {
 	try {
+		console.log('Generating journey...');
 		const { city, days, keywords } = await request.json();
+		console.log('City:', city);
+		console.log('Days:', days);
+		console.log('Keywords:', keywords);
 
-		const prompt = `Create 3 different travel itinerary options for ${city} for ${days} days. 
+		const prompt = `Create 3 different travel itinerary options for a trip to ${city} for ${days} days. 
     Focus on these interests: ${keywords}.
     Each option should be unique and include a mix of activities, restaurants, and attractions.
-    Format each option as a concise paragraph.`;
+    Respond entirely in Korean.
+    Format the response ONLY as a valid JSON object with keys "option_1", "option_2", and "option_3".
+    The value for each key should be the itinerary description formatted as Markdown.`;
 
 		const completion = await openai.chat.completions.create({
 			messages: [{ role: 'user', content: prompt }],
-			model: 'gpt-3.5-turbo'
+			model: 'gpt-4o-mini',
+			response_format: { type: 'json_object' }
 		});
 
-		const response = completion.choices[0].message.content;
-		const options = response?.split('\n\n').filter((opt) => opt.trim().length > 0);
+		const responseContent = completion.choices[0].message.content;
+		console.log('Raw OpenAI Response:', responseContent);
 
-		return json({ options });
+		if (!responseContent) {
+			throw new Error('OpenAI returned empty content.');
+		}
+
+		let optionsData: { [key: string]: string };
+		try {
+			optionsData = JSON.parse(responseContent);
+		} catch (parseError) {
+			console.error('Failed to parse OpenAI JSON response:', parseError);
+			throw new Error('Failed to understand itinerary options from AI.');
+		}
+
+		console.log('Generated options (JSON):', optionsData);
+		return json({ options: optionsData });
 	} catch (error) {
 		console.error('Error generating journey:', error);
 		return json({ error: 'Failed to generate journey options' }, { status: 500 });
