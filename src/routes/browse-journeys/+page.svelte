@@ -100,7 +100,9 @@
 						<CardTitle>{journey.city} - {journey.days}일</CardTitle>
 						<p class="text-sm text-muted-foreground">요청일: {formatDate(journey.created_at)}</p>
 					</CardHeader>
-					<CardContent class="prose prose-sm max-w-none">
+					<CardContent
+						class="prose prose-sm max-w-none dark:text-slate-50 dark:prose-headings:text-slate-50 dark:prose-strong:text-slate-50"
+					>
 						<p class="mb-2 text-sm font-medium">키워드: {journey.keywords || '없음'}</p>
 						{@html parsedPendingJourneyDetails[i]}
 					</CardContent>

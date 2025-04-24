@@ -51,7 +51,9 @@
 						</span>
 					</div>
 					<p class="mb-2 text-muted-foreground">키워드: {journey.keywords || '없음'}</p>
-					<div class="prose prose-sm mb-4 max-w-none">
+					<div
+						class="prose prose-sm mb-4 max-w-none dark:text-slate-50 dark:prose-headings:text-slate-50 dark:prose-strong:text-slate-50"
+					>
 						{@html parsedJourneyDetails[i]}
 					</div>
 					<p class="text-sm text-muted-foreground">

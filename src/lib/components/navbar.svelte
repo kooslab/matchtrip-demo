@@ -3,6 +3,8 @@
 	import { page } from '$app/stores';
 	import type { Writable } from 'svelte/store';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { toggleMode, mode } from 'mode-watcher'; // Import mode-watcher functions/store
+	import { Sun, Moon } from 'lucide-svelte'; // Import icons
 
 	interface Props {
 		currentRole: Writable<'client' | 'guide'>;
@@ -30,6 +32,9 @@
 	let switchToRoleDisplay = $derived(
 		roleDisplayNames[$currentRole === 'client' ? 'guide' : 'client']
 	);
+
+	// Reactive variable for current theme mode
+	let currentMode = $derived($mode);
 </script>
 
 <nav
@@ -61,6 +66,15 @@
 			>
 			<Button variant="outline" size="sm" onclick={toggleRole}>
 				{switchToRoleDisplay} 모드로 전환
+			</Button>
+			<!-- Theme Toggle Button -->
+			<Button variant="ghost" size="icon" onclick={toggleMode}>
+				{#if currentMode === 'light'}
+					<Sun class="h-5 w-5" />
+				{:else}
+					<Moon class="h-5 w-5" />
+				{/if}
+				<span class="sr-only">Toggle theme</span>
 			</Button>
 			<!-- Add Login/Logout buttons here if needed later -->
 		</div>

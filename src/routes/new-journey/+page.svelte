@@ -93,7 +93,7 @@
 				throw new Error(errorData.message || 'Failed to submit journey');
 			}
 
-			alert('Journey submitted successfully! You can view it under My Journeys.');
+			alert('여행 계획 제출 성공! 내 여행에서 확인할 수 있습니다.');
 			journeyOptions = null;
 			selectedJourneyValue = null;
 			city = 'Berlin';
@@ -185,7 +185,9 @@
 					>
 						<CardContent class="pt-6">
 							<h3 class="font-medium">옵션 {i + 1}</h3>
-							<div class="prose prose-sm max-w-none">
+							<div
+								class="prose prose-sm max-w-none dark:text-slate-50 dark:prose-headings:text-slate-50 dark:prose-strong:text-slate-50"
+							>
 								{@html parsedHtml}
 							</div>
 						</CardContent>
