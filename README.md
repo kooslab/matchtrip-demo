@@ -1,52 +1,102 @@
-# KianKit
+# MatchTrip Demo
 
-KianKit is a powerful starter kit that combines the flexibility of SvelteKit with the robustness of Supabase, enabling you to build robust and feature-rich applications over the weekend.
+A travel platform that connects travelers with local guides using AI-powered journey planning.
 
-## Getting Started
+## Features
 
-1. Clone the repository to your local machine.
-2. Copy the `.env.example` file and rename it to `.env`.
-3. Configure [OAuth](https://supabase.com/docs/guides/auth#social-auth) pages and a custom [SMTP](https://supabase.com/docs/guides/auth/auth-smtp) (I recommend Resend)
-4. Configure the Supabase environment variables in the `.env` file with your Supabase project credentials.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcowboycodr%2FKianKit&env=PUBLIC_SUPABASE_URL,PUBLIC_SUPABASE_ANON_KEY&project-name=kiankit-vercel-deployment)
-
-> **Note:** KianKit is preconfigured for deployment on Vercel. However, you can easily change the deployment target by [modifying the adapter](https://kit.svelte.dev/docs/adapters) in the `svelte.config.js` file.
-
-## Components & Layouts
-
-KianKit offers a range of pre-designed, responsive components and layouts that are easy to use and highly adaptable to suit your needs.
-
-- **SplitScreen**: A basic screen layout featuring a blank white area alongside an accented right-hand slot.
-- **Header**: A straightforward header component with a centered navigation component designed to fit into the current size box. It includes one slot for the entire component.
+- AI-powered journey planning using OpenAI GPT-3.5
+- Role-based interface (Traveler/Guide)
+- Journey proposal system
+- Payment integration with Toss Payments
+- Supabase backend
 
 ## Tech Stack
 
-KianKit leverages the following technologies to provide a solid foundation for your application:
+- SvelteKit v2
+- TailwindCSS
+- Supabase
+- OpenAI API
+- Toss Payments
 
-- **SvelteKit**: A modern, file-based framework for building web applications with Svelte.
-- **Supabase**: An open-source Firebase alternative that provides a complete backend-as-a-service solution.
-- **Shadcn/ui**: A comprehensive library of accessible and customizable UI components.
-- **TailwindCSS**: A utility-first CSS framework for rapid UI development.
-- **Lucide**: A beautifully crafted open-source icon library.
-- **Fortawesome**: A popular icon library with a vast collection of icons.
+## Setup
 
-> In addition to simplicity, these libraries are [lightweight and fast](https://pagespeed.web.dev/analysis/https-kit-fromkian-com/8742el3ywj?form_factor=mobile).
+1. Clone the repository
+2. Install dependencies:
 
-## Principles
+   ```bash
+   pnpm install
+   ```
 
-KianKit strictly adheres to these core principles, and we constantly try to better align with them:
+3. Create a `.env` file in the root directory with the following variables:
 
-- **Simplicity with extensibility**: Simplicity must not get in the way of extensibility and vice versa.
-- **Minimalism**: Provide the user with what they need. Nothing else.
-- **Eradicate complexity**: Minimize unnecessary (and sometimes necessary) complexity at all costs.
+   ```
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+   OPENAI_API_KEY=your_openai_api_key
+   ```
 
-These principles aim to give contributors a clearer vision of our goals, and to ensure that KianKit remains user-friendly, efficient, and adaptable. By prioritizing simplicity with extensibility, providing only what is essential, and being efficient at all times, KianKit can offer developers a streamlined and productive experience. Ultimately leading to faster development cycles, and more maintainable codebases.
+4. Set up Supabase:
 
-## Contributing
+   - Create a new Supabase project
+   - Run the following SQL in the SQL editor:
 
-We welcome contributions to improve KianKit! If you encounter any issues or have suggestions for new features, please open an issue on the project's GitHub repository.
+   ```sql
+   -- Create journeys table
+   create table journeys (
+     id uuid default uuid_generate_v4() primary key,
+     city text not null,
+     days integer not null,
+     keywords text not null,
+     journey_details text not null,
+     status text not null default 'pending',
+     created_at timestamp with time zone default timezone('utc'::text, now()) not null
+   );
 
-## License
+   -- Create proposals table
+   create table proposals (
+     id uuid default uuid_generate_v4() primary key,
+     journey_id uuid references journeys(id) not null,
+     message text not null,
+     cost decimal not null,
+     status text not null default 'pending',
+     created_at timestamp with time zone default timezone('utc'::text, now()) not null
+   );
+   ```
 
-KianKit is released under the [MIT License](LICENSE).
+5. Run the development server:
+   ```bash
+   pnpm dev
+   ```
+
+## Usage
+
+1. As a Traveler:
+
+   - Enter your destination city (default: Berlin)
+   - Specify the number of days
+   - Add keywords for your interests
+   - Generate and select a journey option
+   - Submit your journey request
+
+2. As a Guide:
+
+   - Switch to Guide mode
+   - Browse available journey requests
+   - Select a journey and submit a proposal
+   - Include your message and proposed cost
+
+3. Payment:
+   - After accepting a proposal, proceed with payment
+   - Use the test card number: 4242 4242 4242 4242
+   - Any future date for expiry
+   - Any 3-digit CVC
+
+## Development
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm preview` - Preview production build
+- `pnpm check` - Type-check the project
+- `pnpm lint` - Lint the project
+- `pnpm format` - Format the project

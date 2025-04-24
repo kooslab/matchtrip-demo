@@ -3,13 +3,12 @@ import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/publi
 import { type MetaTagsProps } from 'svelte-meta-tags';
 import type { LayoutLoad } from './$types';
 
-export const load: LayoutLoad = async ({ data, url, depends, fetch }) => {
+export const load: LayoutLoad = async ({ data, url, fetch }) => {
 	/**
 	 * Declare a dependency so the layout can be invalidated, for example, on
 	 * session refresh.
 	 */
-	depends('supabase:auth');
-
+	// Initialize supabase client (using PUBLIC ANON key)
 	const supabase = isBrowser()
 		? createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
 				global: {
@@ -26,19 +25,6 @@ export const load: LayoutLoad = async ({ data, url, depends, fetch }) => {
 					}
 				}
 			});
-
-	/**
-	 * It's fine to use `getSession` here, because on the client, `getSession` is
-	 * safe, and on the server, it reads `session` from the `LayoutData`, which
-	 * safely checked the session using `safeGetSession`.
-	 */
-	const {
-		data: { session }
-	} = await supabase.auth.getSession();
-
-	const {
-		data: { user }
-	} = await supabase.auth.getUser();
 
 	const title = `Kooslab`;
 	const description = `Transform your software vision into reality with expert requirements analysis and wireframing. We help SMBs build the right solution, the first time.`;
@@ -77,5 +63,5 @@ export const load: LayoutLoad = async ({ data, url, depends, fetch }) => {
 		}
 	};
 
-	return { session, supabase, user, baseMetaTags };
+	return { supabase, baseMetaTags, cookies: data.cookies, session: null };
 };
