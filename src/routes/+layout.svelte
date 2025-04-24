@@ -37,11 +37,13 @@
 	let metaTags = $derived(deepMerge(data.baseMetaTags, $page.data.pageMetaTags || {}));
 </script>
 
-<ModeWatcher defaultMode="system" />
+<ModeWatcher defaultMode="light" />
 <Toaster position="top-center" />
 <MetaTags {...metaTags} />
 <Navbar {currentRole} />
-{@render children()}
+<main class="pt-16">
+	{@render children()}
+</main>
 
 <style>
 </style>
