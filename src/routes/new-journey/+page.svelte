@@ -8,6 +8,8 @@
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
 	// No need for direct env var imports here
 	// import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+	// Import marked
+	import { marked } from 'marked';
 	import { onMount } from 'svelte';
 
 	// --- State ---
@@ -19,6 +21,12 @@
 	let isLoading = $state(false);
 	let isSubmitting = $state(false);
 	// --- End State ---
+
+	// --- Remove Static Markdown Test Data ---
+	// const testMarkdownOption1 = ...;
+	// let testParsedHtml: string;
+	// try { ... } catch { ... }
+	// --- End Remove Static Test Data ---
 
 	// Initialize Supabase client using public env vars (safe for client-side)
 
@@ -42,7 +50,11 @@
 			}
 
 			const data = await response.json();
-			console.log('Generated options (JSON):', data.options);
+			console.log('Full data received:', data);
+			console.log(
+				'Keys of data.options:',
+				data.options ? Object.keys(data.options) : 'null or undefined'
+			);
 			journeyOptions = data.options || null;
 		} catch (error) {
 			console.error('Error generating journey:', error);
@@ -97,6 +109,8 @@
 	// --- End Functions ---
 
 	let optionsArray = $derived(journeyOptions ? Object.entries(journeyOptions) : []);
+
+	// No dynamic parsing needed for API results for now
 </script>
 
 <div class="container mx-auto px-4 py-24">
@@ -133,18 +147,35 @@
 
 	<!-- Loading Indicator -->
 	{#if isLoading}
-		<div class="mx-auto mt-8 max-w-2xl text-center text-muted-foreground">
+		<div
+			class="mx-auto mt-8 flex max-w-2xl flex-col items-center justify-center space-y-4 text-center text-muted-foreground"
+		>
+			<!-- Simple SVG Spinner -->
+			<svg
+				class="h-8 w-8 animate-spin text-primary"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+			>
+				<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
+				></circle>
+				<path
+					class="opacity-75"
+					fill="currentColor"
+					d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+				></path>
+			</svg>
 			<p>여행 옵션을 생성하는 중입니다. 잠시만 기다려 주세요...</p>
-			<!-- Optional: Add a spinner component here -->
 		</div>
 	{/if}
 
-	<!-- Display options only when not loading and options exist -->
+	<!-- Dynamic Display options from API -->
 	{#if !isLoading && optionsArray.length > 0}
 		<div class="mx-auto mt-8 max-w-2xl">
 			<h2 class="mb-4 text-xl font-semibold">선호하는 일정 선택</h2>
 			<div class="space-y-4">
 				{#each optionsArray as [key, value], i}
+					{@const parsedHtml = marked.parse(value)}
 					<Card
 						class="cursor-pointer {selectedJourneyValue === value ? 'border-primary' : ''}"
 						onclick={() => {
@@ -154,8 +185,9 @@
 					>
 						<CardContent class="pt-6">
 							<h3 class="font-medium">옵션 {i + 1}</h3>
-							<!-- Render raw markdown string within pre tags -->
-							<pre class="whitespace-pre-wrap text-sm">{value}</pre>
+							<div class="prose prose-sm max-w-none">
+								{@html parsedHtml}
+							</div>
 						</CardContent>
 					</Card>
 				{/each}
