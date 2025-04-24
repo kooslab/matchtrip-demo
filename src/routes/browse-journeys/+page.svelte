@@ -3,13 +3,20 @@
 	import type { Journey } from '$lib/types';
 	// import { getContext } from 'svelte'; // Context not needed if supabase isn't passed
 	// import type { SupabaseClient } from '@supabase/supabase-js'; // Not needed directly
-	import Button from '$lib/components/ui/button/button.svelte';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '$lib/components/ui/card';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
+	import { Textarea } from '$lib/components/ui/textarea/index.js';
+	import { Input } from '$lib/components/ui/input/index.js';
+	import { Label } from '$lib/components/ui/label/index.js';
+	import {
+		Card,
+		CardContent,
+		CardHeader,
+		CardTitle,
+		CardFooter
+	} from '$lib/components/ui/card/index.js';
 	import { marked } from 'marked';
 	import { onMount } from 'svelte';
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
 	let { data }: { data: PageData } = $props();
 	// Assuming pendingJourneys is loaded via +page.server.ts
@@ -22,6 +29,7 @@
 	let proposalMessage = '';
 	let proposalCost = '';
 	let isSubmitting = false;
+	let showProposalModal = false;
 
 	// Reactive variable for parsed journey details
 	let parsedPendingJourneyDetails = $derived(
@@ -32,17 +40,16 @@
 		if (!selectedJourneyForProposal || !proposalMessage || !proposalCost) return;
 
 		isSubmitting = true;
+		const journeyId = selectedJourneyForProposal.id; // Store the ID before resetting
 		try {
 			const proposalData = {
-				journey_id: selectedJourneyForProposal.id,
+				journey_id: journeyId,
 				message: proposalMessage,
 				cost: parseFloat(proposalCost),
 				status: 'pending'
-				// guide_id should ideally be handled server-side if needed later
 			};
 
 			const response = await fetch('/api/submit-proposal', {
-				// Call new API endpoint
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -57,18 +64,18 @@
 				throw new Error(errorData.message || 'Failed to submit proposal');
 			}
 
-			alert('Proposal submitted successfully!');
-
-			// Refresh data or remove the journey from the list locally
-			pendingJourneys = pendingJourneys.filter((j) => j.id !== selectedJourneyForProposal!.id);
+			// Remove the journey from the list before resetting the form
+			pendingJourneys = pendingJourneys.filter((j) => j.id !== journeyId);
 
 			// Reset form
 			selectedJourneyForProposal = null;
 			proposalMessage = '';
 			proposalCost = '';
+
+			alert('제안이 성공적으로 제출되었습니다!');
 		} catch (error: any) {
 			console.error('Error submitting proposal:', error);
-			alert(`Failed to submit proposal: ${error.message}`);
+			alert(`제안 제출 실패: ${error.message}`);
 		} finally {
 			isSubmitting = false;
 		}
@@ -86,7 +93,7 @@
 	{#if pendingJourneys.length === 0}
 		<p class="text-center text-muted-foreground">현재 제안 가능한 여행이 없습니다.</p>
 	{:else}
-		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+		<div class="flex flex-col gap-6">
 			{#each pendingJourneys as journey, i (journey.id)}
 				<Card class={selectedJourneyForProposal?.id === journey.id ? 'border-primary' : ''}>
 					<CardHeader>
@@ -98,61 +105,52 @@
 						{@html parsedPendingJourneyDetails[i]}
 					</CardContent>
 					<CardFooter>
-						{#if selectedJourneyForProposal?.id !== journey.id}
-							<Button class="w-full" onclick={() => (selectedJourneyForProposal = journey)}>
-								제안하기 선택
-							</Button>
-						{:else}
-							<Button
-								variant="secondary"
-								class="w-full"
-								onclick={() => (selectedJourneyForProposal = null)}
+						<Dialog.Root>
+							<Dialog.Trigger
+								class={buttonVariants({ variant: 'outline' })}
+								onclick={() => (selectedJourneyForProposal = journey)}
 							>
-								취소
-							</Button>
-						{/if}
+								제안하기 선택
+							</Dialog.Trigger>
+							<Dialog.Content class="sm:max-w-[425px]">
+								<Dialog.Header>
+									<Dialog.Title>{journey.city} 여행 제안서 제출</Dialog.Title>
+								</Dialog.Header>
+								<div class="grid gap-4 py-4">
+									<div class="grid gap-2">
+										<Label for="proposalCost">제안 비용 (EUR)</Label>
+										<Input
+											id="proposalCost"
+											type="number"
+											bind:value={proposalCost}
+											min="0"
+											step="any"
+											placeholder="예: 150.50"
+											required
+										/>
+									</div>
+									<div class="grid gap-2">
+										<Label for="proposalMessage">제안 메시지</Label>
+										<Textarea
+											id="proposalMessage"
+											bind:value={proposalMessage}
+											rows={5}
+											placeholder="자신을 소개하고 이 여행에 적합한 가이드인 이유를 설명해주세요..."
+											required
+										/>
+									</div>
+								</div>
+								<Dialog.Footer>
+									<Button variant="outline" onclick={() => Dialog.close()}>취소</Button>
+									<Button onclick={submitProposal} disabled={isSubmitting}>
+										{isSubmitting ? '제출 중...' : '제안서 제출하기'}
+									</Button>
+								</Dialog.Footer>
+							</Dialog.Content>
+						</Dialog.Root>
 					</CardFooter>
 				</Card>
 			{/each}
-		</div>
-	{/if}
-
-	{#if selectedJourneyForProposal}
-		<div class="mt-12 border-t pt-8">
-			<h2 class="mb-6 text-2xl font-semibold">
-				{selectedJourneyForProposal.city} 여행 제안서 제출
-			</h2>
-			<Card class="mx-auto max-w-lg">
-				<CardContent class="space-y-4 pt-6">
-					<div>
-						<Label for="proposalMessage">제안 메시지</Label>
-						<Textarea
-							id="proposalMessage"
-							bind:value={proposalMessage}
-							rows={5}
-							placeholder="자신을 소개하고 이 여행에 적합한 가이드인 이유를 설명해주세요..."
-							required
-						/>
-					</div>
-					<div>
-						<Label for="proposalCost">제안 비용 (EUR)</Label>
-						<Input
-							id="proposalCost"
-							type="number"
-							bind:value={proposalCost}
-							min="0"
-							step="any"
-							placeholder="예: 150.50"
-							required
-						/>
-					</div>
-				</CardContent>
-				<CardFooter>
-					<Button class="w-full" onclick={submitProposal} disabled={isSubmitting}>
-						{isSubmitting ? '제출 중...' : '제안서 제출하기'}
-					</Button>
-				</CardFooter>
-			</Card>
 		</div>
 	{/if}
 </div>

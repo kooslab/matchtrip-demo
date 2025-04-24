@@ -23,7 +23,7 @@
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"autoprefixer": "^10.4.16",
-		"bits-ui": "^0.13.0",
+		"bits-ui": "^0.22.0",
 		"clsx": "^2.1.1",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -73,6 +73,7 @@
 		"openai": "^4.20.0",
 		"svelte-fa": "^4.0.3",
 		"svelte-i18n": "^4.0.1",
+		"svelte-radix": "^2.0.1",
 		"svelte-sonner": "^0.3.28"
 	},
 	"engines": {
